@@ -85,9 +85,13 @@ function getPizzaCopy(
   return menuPreview.pizzas[slug as keyof Dictionary['menuPreview']['pizzas']];
 }
 
+function hasCustomPizzaImage(imagePath: string) {
+  return !imagePath.startsWith('/images/pizza/');
+}
+
 function NavbarSection({ locale, dictionary }: { locale: Locale; dictionary: Dictionary['navbar'] }) {
   return (
-    <header className="sticky top-4 z-30 rounded-[2rem] border border-brand-border/40 bg-brand-brown/90 px-4 py-4 shadow-[0_30px_80px_rgba(29,13,3,0.28)] backdrop-blur-xl sm:px-6">
+    <header className="relative z-30 rounded-[2rem] border border-brand-border/40 bg-brand-brown/90 px-4 py-4 shadow-[0_30px_80px_rgba(29,13,3,0.28)] backdrop-blur-xl sm:px-6 lg:sticky lg:top-4">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <a href="#home" className="flex min-w-0 flex-1 items-center gap-4">
           <div className="overflow-hidden rounded-2xl border border-brand-border/50 bg-brand-cream p-1 shadow-[0_12px_30px_rgba(29,13,3,0.18)]">
@@ -186,8 +190,8 @@ function FeaturedSection({ locale, dictionary }: { locale: Locale; dictionary: D
           return (
             <article key={item.slug} className="overflow-hidden rounded-[2rem] border border-brand-border/18 bg-brand-creamLight shadow-[0_24px_60px_rgba(81,45,16,0.14)]">
               <div className={`p-5 ${index % 3 === 0 ? 'bg-[radial-gradient(circle_at_top,#fde68a_0%,#fb7185_45%,#881337_100%)]' : index % 3 === 1 ? 'bg-[radial-gradient(circle_at_top,#fcd34d_0%,#dc2626_45%,#292524_100%)]' : 'bg-[radial-gradient(circle_at_top,#86efac_0%,#ea580c_45%,#431407_100%)]'}`}>
-                {item.image === '/calabresa.png' ? (
-                <div className="overflow-hidden rounded-[1.5rem] border border-brand-cream/18 shadow-[0_20px_50px_rgba(81,45,16,0.22)]">
+                {hasCustomPizzaImage(item.image) ? (
+                  <div className="overflow-hidden rounded-[1.5rem] border border-brand-cream/18 shadow-[0_20px_50px_rgba(81,45,16,0.22)]">
                     <Image
                       src={item.image}
                       alt={copy.imageAlt}
@@ -282,9 +286,18 @@ function AboutSection({ dictionary, images }: { dictionary: Dictionary['about'];
         </div>
       </div>
       <div className="rounded-[2.5rem] border border-brand-border/20 bg-[linear-gradient(180deg,#633816_0%,#512D10_100%)] p-6 shadow-[0_26px_80px_rgba(81,45,16,0.28)]">
-        <div role="img" aria-label={images.aboutAlt} className="flex min-h-[420px] flex-col justify-end rounded-[2rem] border border-brand-cream/12 bg-[radial-gradient(circle_at_top,#FACD74_0%,#DE9943_26%,#BF3211_54%,#512D10_100%)] p-6">
-          <span className="inline-flex w-fit rounded-full bg-brand-cream px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-brand-red">{dictionary.imageLabel}</span>
-          <p className="mt-4 max-w-md text-lg font-semibold text-brand-creamLight">{dictionary.imageDescription}</p>
+        <div className="relative min-h-[420px] overflow-hidden rounded-[2rem] border border-brand-cream/12">
+          <Image
+            src="/pizza-brocolis.png"
+            alt={images.aboutAlt}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(29,13,3,0.04)_0%,rgba(29,13,3,0.82)_72%,rgba(29,13,3,0.96)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 p-6">
+            <span className="inline-flex w-fit rounded-full bg-brand-cream px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-brand-red">{dictionary.imageLabel}</span>
+            <p className="mt-4 max-w-md text-lg font-semibold text-brand-creamLight">{dictionary.imageDescription}</p>
+          </div>
         </div>
       </div>
     </section>

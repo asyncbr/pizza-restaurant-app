@@ -30,7 +30,7 @@ export default class MyDocument extends Document<Props> {
         <Head>
           <meta
             name="description"
-            content="Jae Pizzas offers artisan pizza with bold flavors, local delivery, and a conversion-focused landing page experience."
+            content="JAE Pizzas offers artisan pizza with bold flavors, local delivery, and a conversion-focused landing page experience."
           />
         </Head>
         <body>
