@@ -4,7 +4,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
   buildWhatsAppLink,
+  getFeaturedPizzas,
+  getOrderedMenuCategories,
+  getPizzasByCategory,
   isSiteLocale,
+  jaEhPizzaMenu,
   localeLabels,
   siteConfig,
   siteContent,
@@ -105,6 +109,13 @@ export default function Home() {
   const content = siteContent[locale];
   const landing = content.pizzaLanding;
   const primaryWhatsAppLink = buildWhatsAppLink(landing.contact.whatsappMessage);
+  const featuredPizzas = getFeaturedPizzas();
+  const orderedCategories = getOrderedMenuCategories();
+  const menuPreview = orderedCategories.map((category) => ({
+    ...category,
+    pizzas: getPizzasByCategory(category.id).slice(0, 3),
+  }));
+  const sizeMap = new Map(jaEhPizzaMenu.sizes.map((size) => [size.id, size]));
   const [formState, setFormState] = useState<ContactFormState>({
     name: '',
     email: '',
@@ -324,7 +335,7 @@ export default function Home() {
                       {landing.hero.imageTitle}
                     </p>
                   </div>
-                  <div className="rounded-[1.5rem] bg-cream-50 p-4 text-stone-900">
+                  <div className="rounded-[1.5rem] bg-amber-50 p-4 text-stone-900">
                     <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-700/75">
                       {landing.hero.imagePlaceholderLabel}
                     </p>
@@ -345,46 +356,73 @@ export default function Home() {
             />
 
             <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {landing.featured.items.map((item, index) => (
-                <article
-                  key={item.title}
-                  className="overflow-hidden rounded-[2rem] border border-stone-900/8 bg-white shadow-[0_24px_60px_rgba(77,46,24,0.14)]"
-                >
-                  <div
-                    className={`p-5 ${
-                      index % 3 === 0
-                        ? 'bg-[radial-gradient(circle_at_top,#fde68a_0%,#fb7185_45%,#881337_100%)]'
-                        : index % 3 === 1
-                          ? 'bg-[radial-gradient(circle_at_top,#fcd34d_0%,#dc2626_45%,#292524_100%)]'
-                          : 'bg-[radial-gradient(circle_at_top,#86efac_0%,#ea580c_45%,#431407_100%)]'
-                    }`}
-                  >
-                    <div className="flex aspect-[4/3] items-end rounded-[1.5rem] border border-white/15 bg-black/18 p-4">
-                      <span className="rounded-full bg-white/88 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900">
-                        {item.imageLabel}
-                      </span>
-                    </div>
-                  </div>
+              {featuredPizzas.map((item, index) => {
+                const sizeLabels = item.sizesAvailable
+                  .map((sizeId) => sizeMap.get(sizeId))
+                  .filter((size): size is { id: string; label: string; slices: number } =>
+                    Boolean(size)
+                  )
+                  .map((size) => `${size.label} • ${size.slices} fatias`);
 
-                  <div className="p-6">
-                    <div className="flex items-start justify-between gap-4">
-                      <h3 className="text-2xl font-semibold text-stone-950">{item.title}</h3>
-                      <span className="rounded-full bg-red-50 px-3 py-1 text-sm font-semibold text-red-700">
-                        {item.price}
-                      </span>
-                    </div>
-                    <p className="mt-4 text-sm leading-7 text-stone-700">{item.description}</p>
-                    <a
-                      href={buildWhatsAppLink(item.whatsappMessage)}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-6 inline-flex rounded-full bg-stone-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-stone-800"
+                return (
+                  <article
+                    key={item.slug}
+                    className="overflow-hidden rounded-[2rem] border border-stone-900/8 bg-white shadow-[0_24px_60px_rgba(77,46,24,0.14)]"
+                  >
+                    <div
+                      className={`p-5 ${
+                        index % 3 === 0
+                          ? 'bg-[radial-gradient(circle_at_top,#fde68a_0%,#fb7185_45%,#881337_100%)]'
+                          : index % 3 === 1
+                            ? 'bg-[radial-gradient(circle_at_top,#fcd34d_0%,#dc2626_45%,#292524_100%)]'
+                            : 'bg-[radial-gradient(circle_at_top,#86efac_0%,#ea580c_45%,#431407_100%)]'
+                      }`}
                     >
-                      {item.cta}
-                    </a>
-                  </div>
-                </article>
-              ))}
+                      <div className="flex aspect-[4/3] items-end rounded-[1.5rem] border border-white/15 bg-black/18 p-4">
+                        <span className="rounded-full bg-white/88 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900">
+                          {item.image}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-6">
+                      <div className="flex items-start justify-between gap-4">
+                        <h3 className="text-2xl font-semibold text-stone-950">{item.name}</h3>
+                        <span className="rounded-full bg-red-50 px-3 py-1 text-sm font-semibold text-red-700">
+                          {item.priceLabel}
+                        </span>
+                      </div>
+                      <p className="mt-4 text-sm leading-7 text-stone-700">
+                        {item.description}
+                      </p>
+                      <div className="mt-5 grid gap-3 text-sm text-stone-700">
+                        <div>
+                          <p className="font-semibold text-stone-950">
+                            {landing.featured.ingredientsLabel}
+                          </p>
+                          <p className="mt-1 leading-6">{item.ingredients.join(', ')}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-stone-950">
+                            {landing.featured.sizesLabel}
+                          </p>
+                          <p className="mt-1 leading-6">{sizeLabels.join(', ')}</p>
+                        </div>
+                      </div>
+                      <a
+                        href={buildWhatsAppLink(
+                          `Ola! Quero pedir a pizza ${item.name} da ${jaEhPizzaMenu.brand}.`
+                        )}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-6 inline-flex rounded-full bg-stone-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-stone-800"
+                      >
+                        {landing.featured.ctaLabel}
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </section>
 
@@ -396,16 +434,16 @@ export default function Home() {
                     {landing.promo.eyebrow}
                   </p>
                   <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                    {landing.promo.title}
+                    {jaEhPizzaMenu.promo.title}
                   </h2>
                   <p className="mt-4 max-w-2xl text-base leading-7 text-stone-300">
-                    {landing.promo.description}
+                    {jaEhPizzaMenu.promo.subtitle}
                   </p>
                 </div>
 
                 <div className="rounded-[1.75rem] bg-white/8 p-5">
                   <p className="text-sm font-semibold uppercase tracking-[0.24em] text-amber-200/75">
-                    {landing.promo.highlight}
+                    {jaEhPizzaMenu.promo.highlightTag}
                   </p>
                   <a
                     href={primaryWhatsAppLink}
@@ -413,7 +451,7 @@ export default function Home() {
                     rel="noreferrer"
                     className="mt-5 inline-flex rounded-full bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-500"
                   >
-                    {landing.promo.ctaLabel}
+                    {jaEhPizzaMenu.promo.ctaLabel}
                   </a>
                 </div>
               </div>
@@ -475,7 +513,7 @@ export default function Home() {
 
             <div className="rounded-[2.5rem] border border-red-200/10 bg-[linear-gradient(180deg,#4a1715_0%,#181211_100%)] p-6 shadow-[0_26px_80px_rgba(0,0,0,0.28)]">
               <div className="flex min-h-[420px] flex-col justify-end rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,#f59e0b_0%,#dc2626_35%,#1c1917_100%)] p-6">
-                <span className="inline-flex w-fit rounded-full bg-cream-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-red-700">
+                <span className="inline-flex w-fit rounded-full bg-amber-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-red-700">
                   {landing.about.imageLabel}
                 </span>
                 <p className="mt-4 max-w-md text-lg font-semibold text-stone-50">
@@ -496,22 +534,43 @@ export default function Home() {
                 description={landing.menu.description}
               />
               <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                {landing.menu.categories.map((category) => (
+                {menuPreview.map((category) => (
                   <article
-                    key={category.title}
+                    key={category.id}
                     className="rounded-[1.75rem] border border-stone-900/8 bg-white px-5 py-6 shadow-[0_18px_40px_rgba(77,46,24,0.08)]"
                   >
-                    <h3 className="text-lg font-semibold text-stone-950">{category.title}</h3>
-                    <ul className="mt-4 space-y-3">
-                      {category.items.map((entry) => (
+                    <h3 className="text-lg font-semibold text-stone-950">{category.name}</h3>
+                    <p className="mt-2 text-sm leading-6 text-stone-600">{category.description}</p>
+                    <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-red-700/75">
+                      {landing.menu.itemsLabel}
+                    </p>
+                    <ul className="mt-3 space-y-3">
+                      {category.pizzas.map((entry) => {
+                        const primarySize = entry.sizesAvailable
+                          .map((sizeId) => sizeMap.get(sizeId))
+                          .filter((size): size is NonNullable<typeof size> => Boolean(size))[0];
+
+                        return (
                         <li
-                          key={entry}
-                          className="flex items-center gap-3 text-sm text-stone-700"
+                          key={entry.slug}
+                          className="rounded-2xl bg-stone-50 px-4 py-3 text-sm text-stone-700"
                         >
-                          <span className="h-2.5 w-2.5 rounded-full bg-green-700" />
-                          {entry}
+                          <div className="flex items-start justify-between gap-4">
+                            <div>
+                              <p className="font-semibold text-stone-950">{entry.name}</p>
+                              <p className="mt-1 text-xs leading-5 text-stone-600">
+                                {entry.priceLabel}
+                              </p>
+                            </div>
+                            {primarySize ? (
+                              <span className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-700">
+                                {landing.menu.sizesLabel}: {primarySize.label}
+                              </span>
+                            ) : null}
+                          </div>
                         </li>
-                      ))}
+                        );
+                      })}
                     </ul>
                   </article>
                 ))}
@@ -704,7 +763,7 @@ export default function Home() {
                     {landing.contact.hoursLabel}
                   </p>
                   <p className="mt-2 text-base leading-7 text-stone-300">
-                    {landing.contact.hours}
+                    {jaEhPizzaMenu.serviceInfo.openingHours}
                   </p>
                 </div>
                 <div>
@@ -712,7 +771,7 @@ export default function Home() {
                     {landing.contact.deliveryLabel}
                   </p>
                   <p className="mt-2 text-base leading-7 text-stone-300">
-                    {landing.contact.deliveryNote}
+                    {jaEhPizzaMenu.serviceInfo.serviceAreaNote}
                   </p>
                 </div>
               </div>
@@ -730,7 +789,7 @@ export default function Home() {
                   rel="noreferrer"
                   className="mt-5 inline-flex rounded-full bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-500"
                 >
-                  {landing.contact.whatsappCta}
+                  {jaEhPizzaMenu.serviceInfo.whatsappLabel}
                 </a>
               </div>
             </aside>

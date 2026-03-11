@@ -25,6 +25,458 @@ export function buildWhatsAppLink(message: string) {
   return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodedMessage}`;
 }
 
+export type PizzaSize = {
+  id: string;
+  label: string;
+  slices: number;
+};
+
+export type PizzaCategoryId =
+  | 'classics'
+  | 'chicken-and-meat'
+  | 'specials'
+  | 'fish-and-vegetarian';
+
+export type PizzaCategory = {
+  id: PizzaCategoryId;
+  name: string;
+  description: string;
+  order: number;
+};
+
+export type PizzaMenuItem = {
+  slug: string;
+  category: PizzaCategoryId;
+  name: string;
+  description: string;
+  ingredients: string[];
+  sizesAvailable: string[];
+  priceLabel: string;
+  featured: boolean;
+  image: string;
+  tags: string[];
+};
+
+export type RestaurantPromo = {
+  title: string;
+  subtitle: string;
+  ctaLabel: string;
+  highlightTag: string;
+};
+
+export type RestaurantServiceInfo = {
+  delivery: boolean;
+  pickup: boolean;
+  openingHours: string;
+  serviceAreaNote: string;
+  whatsappLabel: string;
+};
+
+export type RestaurantMenu = {
+  brand: string;
+  currency: 'BRL';
+  defaultLanguage: SiteLocale;
+  sizes: PizzaSize[];
+  categories: PizzaCategory[];
+  pizzas: PizzaMenuItem[];
+  featuredPizzaSlugs: string[];
+  promo: RestaurantPromo;
+  serviceInfo: RestaurantServiceInfo;
+};
+
+export const jaEhPizzaMenu: RestaurantMenu = {
+  brand: 'Ja Eh',
+  currency: 'BRL',
+  defaultLanguage: 'pt-BR',
+  sizes: [
+    {
+      id: 'grande',
+      label: 'Grande',
+      slices: 8,
+    },
+  ],
+  categories: [
+    {
+      id: 'classics',
+      name: 'Classicas',
+      description: 'Sabores tradicionais que fazem parte de qualquer pizzaria de bairro forte.',
+      order: 1,
+    },
+    {
+      id: 'chicken-and-meat',
+      name: 'Frango e Carnes',
+      description: 'Opcoes com frango, bacon, lombo e sabores mais intensos.',
+      order: 2,
+    },
+    {
+      id: 'specials',
+      name: 'Especiais',
+      description: 'Combinacoes com mais personalidade para destacar o cardapio.',
+      order: 3,
+    },
+    {
+      id: 'fish-and-vegetarian',
+      name: 'Atum e Vegetarianas',
+      description: 'Alternativas com atum, palmito e sabores mais leves.',
+      order: 4,
+    },
+  ],
+  featuredPizzaSlugs: [
+    'calabresa',
+    'frango-com-catupiry',
+    'portuguesa',
+    'quatro-queijos',
+    'peperoni',
+    'marguerita',
+  ],
+  promo: {
+    title: 'Noite da Pizza em Familia',
+    subtitle:
+      'Monte sua noite perfeita com pizzas classicas e especiais feitas para compartilhar.',
+    ctaLabel: 'Peca agora',
+    highlightTag: 'Grande com 8 fatias',
+  },
+  serviceInfo: {
+    delivery: true,
+    pickup: true,
+    openingHours: 'Todos os dias • 18:00 as 23:30',
+    serviceAreaNote: 'Entregas em bairros proximos.',
+    whatsappLabel: 'Pedir no WhatsApp',
+  },
+  pizzas: [
+    {
+      slug: 'mussarela',
+      category: 'classics',
+      name: 'Mussarela',
+      description: 'Classica, simples e sempre confiavel para pedidos do dia a dia.',
+      ingredients: ['molho de tomate', 'mussarela', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 43,90',
+      featured: false,
+      image: '/images/pizza/mussarela.jpg',
+      tags: ['classica', 'tradicional'],
+    },
+    {
+      slug: 'calabresa',
+      category: 'classics',
+      name: 'Calabresa',
+      description: 'Um dos sabores mais pedidos, com perfil direto e muito familiar.',
+      ingredients: ['molho de tomate', 'mussarela', 'calabresa fatiada', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 46,90',
+      featured: true,
+      image: '/images/pizza/calabresa.jpg',
+      tags: ['classica', 'mais pedida'],
+    },
+    {
+      slug: 'calabresa-com-cebola',
+      category: 'classics',
+      name: 'Calabresa com Cebola',
+      description: 'Versao tradicional com cebola para um sabor ainda mais marcante.',
+      ingredients: ['molho de tomate', 'mussarela', 'calabresa fatiada', 'cebola', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 48,90',
+      featured: false,
+      image: '/images/pizza/calabresa-com-cebola.jpg',
+      tags: ['classica'],
+    },
+    {
+      slug: 'portuguesa',
+      category: 'classics',
+      name: 'Portuguesa',
+      description: 'Combinacao brasileira muito conhecida e facil de vender.',
+      ingredients: ['molho de tomate', 'mussarela', 'presunto', 'ovo', 'cebola', 'ervilha', 'azeitona', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 52,90',
+      featured: true,
+      image: '/images/pizza/portuguesa.jpg',
+      tags: ['classica', 'tradicional'],
+    },
+    {
+      slug: 'marguerita',
+      category: 'classics',
+      name: 'Marguerita',
+      description: 'Leve, elegante e otima para destacar o visual do cardapio.',
+      ingredients: ['molho de tomate', 'mussarela', 'tomate', 'manjericao', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 47,90',
+      featured: true,
+      image: '/images/pizza/marguerita.jpg',
+      tags: ['classica', 'leve'],
+    },
+    {
+      slug: 'napolitana',
+      category: 'classics',
+      name: 'Napolitana',
+      description: 'Sabor tradicional com perfil familiar e acabamento bem brasileiro.',
+      ingredients: ['molho de tomate', 'mussarela', 'tomate', 'parmesao', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 46,90',
+      featured: false,
+      image: '/images/pizza/napolitana.jpg',
+      tags: ['classica'],
+    },
+    {
+      slug: 'presunto',
+      category: 'classics',
+      name: 'Presunto',
+      description: 'Opcao direta e popular para um cardapio enxuto e local.',
+      ingredients: ['molho de tomate', 'mussarela', 'presunto', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 44,90',
+      featured: false,
+      image: '/images/pizza/presunto.jpg',
+      tags: ['classica'],
+    },
+    {
+      slug: 'bacon',
+      category: 'classics',
+      name: 'Bacon',
+      description: 'Sabor forte para quem gosta de pizza mais marcante.',
+      ingredients: ['molho de tomate', 'mussarela', 'bacon', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 49,90',
+      featured: false,
+      image: '/images/pizza/bacon.jpg',
+      tags: ['classica', 'intensa'],
+    },
+    {
+      slug: 'frango',
+      category: 'chicken-and-meat',
+      name: 'Frango',
+      description: 'Versao simples de frango desfiado para um publico amplo.',
+      ingredients: ['molho de tomate', 'mussarela', 'frango desfiado', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 47,90',
+      featured: false,
+      image: '/images/pizza/frango.jpg',
+      tags: ['frango'],
+    },
+    {
+      slug: 'frango-com-catupiry',
+      category: 'chicken-and-meat',
+      name: 'Frango com Catupiry',
+      description: 'Um dos sabores mais fortes para conversao em pizzarias brasileiras.',
+      ingredients: ['molho de tomate', 'mussarela', 'frango desfiado', 'catupiry', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 53,90',
+      featured: true,
+      image: '/images/pizza/frango-com-catupiry.jpg',
+      tags: ['frango', 'mais pedida'],
+    },
+    {
+      slug: 'frango-com-bacon',
+      category: 'chicken-and-meat',
+      name: 'Frango com Bacon',
+      description: 'Mistura de frango e bacon para um perfil mais indulgente.',
+      ingredients: ['molho de tomate', 'mussarela', 'frango desfiado', 'bacon', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 54,90',
+      featured: false,
+      image: '/images/pizza/frango-com-bacon.jpg',
+      tags: ['frango', 'bacon'],
+    },
+    {
+      slug: 'peperoni',
+      category: 'chicken-and-meat',
+      name: 'Peperoni',
+      description: 'Sabor visualmente forte e excelente para destaque da landing page.',
+      ingredients: ['molho de tomate', 'mussarela', 'peperoni', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 55,90',
+      featured: true,
+      image: '/images/pizza/peperoni.jpg',
+      tags: ['carne', 'destaque visual'],
+    },
+    {
+      slug: 'lombo',
+      category: 'chicken-and-meat',
+      name: 'Lombo',
+      description: 'Boa opcao para ampliar o cardapio com um sabor conhecido.',
+      ingredients: ['molho de tomate', 'mussarela', 'lombo', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 50,90',
+      featured: false,
+      image: '/images/pizza/lombo.jpg',
+      tags: ['carne'],
+    },
+    {
+      slug: 'lombo-com-catupiry',
+      category: 'chicken-and-meat',
+      name: 'Lombo com Catupiry',
+      description: 'Combinacao forte para completar a secao de carnes.',
+      ingredients: ['molho de tomate', 'mussarela', 'lombo', 'catupiry', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 54,90',
+      featured: false,
+      image: '/images/pizza/lombo-com-catupiry.jpg',
+      tags: ['carne', 'catupiry'],
+    },
+    {
+      slug: 'quatro-queijos',
+      category: 'specials',
+      name: 'Quatro Queijos',
+      description: 'Sabor classico especial, otimo para um menu com cara mais premium.',
+      ingredients: ['molho de tomate', 'mussarela', 'catupiry', 'parmesao', 'provolone', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 57,90',
+      featured: true,
+      image: '/images/pizza/quatro-queijos.jpg',
+      tags: ['especial', 'queijos'],
+    },
+    {
+      slug: 'cinco-queijos',
+      category: 'specials',
+      name: 'Cinco Queijos',
+      description: 'Variacao mais intensa para reforcar o grupo dos sabores especiais.',
+      ingredients: ['molho de tomate', 'mussarela', 'catupiry', 'parmesao', 'provolone', 'gorgonzola', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 61,90',
+      featured: false,
+      image: '/images/pizza/cinco-queijos.jpg',
+      tags: ['especial', 'queijos'],
+    },
+    {
+      slug: 'moda-da-casa',
+      category: 'specials',
+      name: 'Moda da Casa',
+      description: 'Sabor assinatura para dar personalidade propria ao cardapio.',
+      ingredients: ['molho de tomate', 'mussarela', 'calabresa', 'presunto', 'cebola', 'azeitona', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 58,90',
+      featured: false,
+      image: '/images/pizza/moda-da-casa.jpg',
+      tags: ['especial', 'assinatura'],
+    },
+    {
+      slug: 'paulista',
+      category: 'specials',
+      name: 'Paulista',
+      description: 'Sabor regional que ajuda a dar identidade local ao cardapio.',
+      ingredients: ['molho de tomate', 'mussarela', 'calabresa', 'cebola', 'tomate', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 55,90',
+      featured: false,
+      image: '/images/pizza/paulista.jpg',
+      tags: ['especial', 'regional'],
+    },
+    {
+      slug: 'brasileira',
+      category: 'specials',
+      name: 'Brasileira',
+      description: 'Combinacao com apelo popular para um cardapio bem brasileiro.',
+      ingredients: ['molho de tomate', 'mussarela', 'presunto', 'milho', 'ovo', 'azeitona', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 56,90',
+      featured: false,
+      image: '/images/pizza/brasileira.jpg',
+      tags: ['especial', 'regional'],
+    },
+    {
+      slug: 'baiana',
+      category: 'specials',
+      name: 'Baiana',
+      description: 'Opcao mais intensa e marcante para quem gosta de um toque picante.',
+      ingredients: ['molho de tomate', 'mussarela', 'calabresa moida', 'cebola', 'pimenta', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 54,90',
+      featured: false,
+      image: '/images/pizza/baiana.jpg',
+      tags: ['especial', 'picante'],
+    },
+    {
+      slug: 'toscana',
+      category: 'specials',
+      name: 'Toscana',
+      description: 'Sabor robusto para reforcar a parte especial do cardapio.',
+      ingredients: ['molho de tomate', 'mussarela', 'calabresa moida', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 52,90',
+      featured: false,
+      image: '/images/pizza/toscana.jpg',
+      tags: ['especial'],
+    },
+    {
+      slug: 'atum',
+      category: 'fish-and-vegetarian',
+      name: 'Atum',
+      description: 'Classico de pizzaria para quem busca outra linha de sabor.',
+      ingredients: ['molho de tomate', 'mussarela', 'atum', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 51,90',
+      featured: false,
+      image: '/images/pizza/atum.jpg',
+      tags: ['atum'],
+    },
+    {
+      slug: 'atum-com-cebola',
+      category: 'fish-and-vegetarian',
+      name: 'Atum com Cebola',
+      description: 'Versao mais tradicional dentro da familia de atum.',
+      ingredients: ['molho de tomate', 'mussarela', 'atum', 'cebola', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 52,90',
+      featured: false,
+      image: '/images/pizza/atum-com-cebola.jpg',
+      tags: ['atum'],
+    },
+    {
+      slug: 'atum-com-bacon',
+      category: 'fish-and-vegetarian',
+      name: 'Atum com Bacon',
+      description: 'Combinacao diferente que chama atencao no menu.',
+      ingredients: ['molho de tomate', 'mussarela', 'atum', 'bacon', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 55,90',
+      featured: false,
+      image: '/images/pizza/atum-com-bacon.jpg',
+      tags: ['atum', 'bacon'],
+    },
+    {
+      slug: 'palmito',
+      category: 'fish-and-vegetarian',
+      name: 'Palmito',
+      description: 'Opcao mais leve e muito comum em cardapios brasileiros.',
+      ingredients: ['molho de tomate', 'mussarela', 'palmito', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 49,90',
+      featured: false,
+      image: '/images/pizza/palmito.jpg',
+      tags: ['vegetariana'],
+    },
+    {
+      slug: 'palmito-com-catupiry',
+      category: 'fish-and-vegetarian',
+      name: 'Palmito com Catupiry',
+      description: 'Versao mais cremosa para complementar o menu vegetariano.',
+      ingredients: ['molho de tomate', 'mussarela', 'palmito', 'catupiry', 'oregano'],
+      sizesAvailable: ['grande'],
+      priceLabel: 'a partir de R$ 53,90',
+      featured: false,
+      image: '/images/pizza/palmito-com-catupiry.jpg',
+      tags: ['vegetariana', 'catupiry'],
+    },
+  ],
+};
+
+export function getPizzaBySlug(slug: string) {
+  return jaEhPizzaMenu.pizzas.find((pizza) => pizza.slug === slug) ?? null;
+}
+
+export function getFeaturedPizzas() {
+  return jaEhPizzaMenu.featuredPizzaSlugs
+    .map((slug) => getPizzaBySlug(slug))
+    .filter((pizza): pizza is PizzaMenuItem => pizza !== null);
+}
+
+export function getOrderedMenuCategories() {
+  return [...jaEhPizzaMenu.categories].sort((left, right) => left.order - right.order);
+}
+
+export function getPizzasByCategory(categoryId: PizzaCategoryId) {
+  return jaEhPizzaMenu.pizzas.filter((pizza) => pizza.category === categoryId);
+}
+
 type NavItem = {
   label: string;
   href: string;
@@ -40,23 +492,9 @@ type CtaSet = {
   submitting: string;
 };
 
-type PizzaCard = {
-  title: string;
-  description: string;
-  price: string;
-  imageLabel: string;
-  cta: string;
-  whatsappMessage: string;
-};
-
 type WhyChooseItem = {
   title: string;
   description: string;
-};
-
-type MenuCategory = {
-  title: string;
-  items: string[];
 };
 
 type Testimonial = {
@@ -113,7 +551,9 @@ type LocaleContent = {
       eyebrow: string;
       title: string;
       description: string;
-      items: PizzaCard[];
+      ctaLabel: string;
+      ingredientsLabel: string;
+      sizesLabel: string;
     };
     promo: {
       eyebrow: string;
@@ -141,10 +581,11 @@ type LocaleContent = {
       eyebrow: string;
       title: string;
       description: string;
-      categories: MenuCategory[];
       asideTitle: string;
       asideDescription: string;
       asideBadge: string;
+      itemsLabel: string;
+      sizesLabel: string;
     };
     testimonials: {
       eyebrow: string;
@@ -229,57 +670,10 @@ export const siteContent: Record<SiteLocale, LocaleContent> = {
         eyebrow: 'Pizzas em destaque',
         title: 'Sabores pensados para abrir apetite e puxar o clique.',
         description:
-          'A primeira selecao da Ja Eh equilibra classicos muito desejados e combinacoes com assinatura, mantendo um visual forte para portfolio e futuras adaptacoes comerciais.',
-        items: [
-          {
-            title: 'Margherita do Forno',
-            description: 'Molho de tomate intenso, mozzarella cremosa, manjericao fresco e azeite finalizado na saida do forno.',
-            price: 'A partir de R$ 42',
-            imageLabel: 'Placeholder Margherita',
-            cta: 'Pedir esta pizza',
-            whatsappMessage: 'Ola! Quero pedir a pizza Margherita do Forno da Ja Eh.',
-          },
-          {
-            title: 'Pepperoni Arrabbiata',
-            description: 'Pepperoni crocante, queijo generoso e toque levemente picante para um sabor mais marcante.',
-            price: 'A partir de R$ 48',
-            imageLabel: 'Placeholder Pepperoni',
-            cta: 'Quero pepperoni',
-            whatsappMessage: 'Ola! Quero pedir a pizza Pepperoni Arrabbiata da Ja Eh.',
-          },
-          {
-            title: 'Quattro Formaggi',
-            description: 'Mozzarella, gorgonzola, parmesao e catupiry em uma combinacao cremosa e intensa.',
-            price: 'A partir de R$ 51',
-            imageLabel: 'Placeholder Quatro Queijos',
-            cta: 'Pedir quatro queijos',
-            whatsappMessage: 'Ola! Quero pedir a pizza Quattro Formaggi da Ja Eh.',
-          },
-          {
-            title: 'Calabresa da Casa',
-            description: 'Calabresa fatiada, cebola roxa suave, molho da casa e finalizacao com oregano tostado.',
-            price: 'A partir de R$ 45',
-            imageLabel: 'Placeholder Calabresa',
-            cta: 'Pedir calabresa',
-            whatsappMessage: 'Ola! Quero pedir a pizza Calabresa da Casa da Ja Eh.',
-          },
-          {
-            title: 'Pesto Burrata',
-            description: 'Base verde de pesto, tomate assado, burrata cremosa e crocancia delicada de castanhas.',
-            price: 'A partir de R$ 56',
-            imageLabel: 'Placeholder Burrata',
-            cta: 'Pedir burrata',
-            whatsappMessage: 'Ola! Quero pedir a pizza Pesto Burrata da Ja Eh.',
-          },
-          {
-            title: 'Chocolate & Morango',
-            description: 'Pizza doce para fechar o pedido com ganache aveludada, morangos frescos e leve toque crocante.',
-            price: 'A partir de R$ 39',
-            imageLabel: 'Placeholder Doce',
-            cta: 'Pedir pizza doce',
-            whatsappMessage: 'Ola! Quero pedir a pizza doce Chocolate & Morango da Ja Eh.',
-          },
-        ],
+          'A selecao passa a vir do cardapio estruturado da Ja Eh, com sabores reais de pizzaria local e espaco para crescer sem retrabalho.',
+        ctaLabel: 'Pedir esta pizza',
+        ingredientsLabel: 'Ingredientes',
+        sizesLabel: 'Tamanho',
       },
       promo: {
         eyebrow: 'Oferta da semana',
@@ -328,29 +722,13 @@ export const siteContent: Record<SiteLocale, LocaleContent> = {
         eyebrow: 'Preview do cardapio',
         title: 'Categorias organizadas para apresentar variedade sem poluir a decisao.',
         description:
-          'O cardapio parcial antecipa a experiencia de compra e deixa espaco para encaminhar o cliente para WhatsApp ou menu completo.',
-        categories: [
-          {
-            title: 'Classic Pizzas',
-            items: ['Margherita do Forno', 'Calabresa da Casa', 'Portuguesa Moderna'],
-          },
-          {
-            title: 'Special Pizzas',
-            items: ['Pepperoni Arrabbiata', 'Pesto Burrata', 'Parma com Rucula'],
-          },
-          {
-            title: 'Sweet Pizzas',
-            items: ['Chocolate & Morango', 'Banana com Canela', 'Romeu e Julieta'],
-          },
-          {
-            title: 'Drinks',
-            items: ['Refrigerantes', 'Cha gelado artesanal', 'Suco natural'],
-          },
-        ],
+          'O preview agrupa o menu por categorias reais da casa e mostra alguns sabores de cada secao para orientar a escolha.',
         asideTitle: 'Quer o cardapio completo?',
         asideDescription:
           'Envie uma mensagem e receba a versao integral com tamanhos, adicionais e combos disponiveis.',
         asideBadge: 'Atendimento rapido por WhatsApp',
+        itemsLabel: 'Sabores',
+        sizesLabel: 'Tamanho disponivel',
       },
       testimonials: {
         eyebrow: 'Clientes satisfeitos',
@@ -476,57 +854,10 @@ export const siteContent: Record<SiteLocale, LocaleContent> = {
         eyebrow: 'Featured pizzas',
         title: 'Flavors designed to build appetite and pull the click.',
         description:
-          'Ja Eh launches with a mix of high-demand classics and signature combinations, keeping the presentation strong for portfolio use and future commercial rollout.',
-        items: [
-          {
-            title: 'Oven Margherita',
-            description: 'Rich tomato sauce, creamy mozzarella, fresh basil, and olive oil finished right out of the oven.',
-            price: 'Starting at $12',
-            imageLabel: 'Margherita placeholder',
-            cta: 'Order this pizza',
-            whatsappMessage: 'Hello! I want to order the Oven Margherita pizza from Ja Eh.',
-          },
-          {
-            title: 'Pepperoni Arrabbiata',
-            description: 'Crispy pepperoni, generous cheese, and a lightly spicy edge for a sharper flavor profile.',
-            price: 'Starting at $14',
-            imageLabel: 'Pepperoni placeholder',
-            cta: 'I want pepperoni',
-            whatsappMessage: 'Hello! I want to order the Pepperoni Arrabbiata pizza from Ja Eh.',
-          },
-          {
-            title: 'Quattro Formaggi',
-            description: 'Mozzarella, gorgonzola, parmesan, and creamy catupiry in a deep, indulgent combination.',
-            price: 'Starting at $15',
-            imageLabel: 'Four cheese placeholder',
-            cta: 'Order four cheese',
-            whatsappMessage: 'Hello! I want to order the Quattro Formaggi pizza from Ja Eh.',
-          },
-          {
-            title: 'House Calabresa',
-            description: 'Sliced sausage, soft red onion, house tomato base, and toasted oregano on top.',
-            price: 'Starting at $13',
-            imageLabel: 'Calabresa placeholder',
-            cta: 'Order calabresa',
-            whatsappMessage: 'Hello! I want to order the House Calabresa pizza from Ja Eh.',
-          },
-          {
-            title: 'Pesto Burrata',
-            description: 'Herby pesto base, roasted tomato, creamy burrata, and a delicate nut crunch.',
-            price: 'Starting at $16',
-            imageLabel: 'Burrata placeholder',
-            cta: 'Order burrata',
-            whatsappMessage: 'Hello! I want to order the Pesto Burrata pizza from Ja Eh.',
-          },
-          {
-            title: 'Chocolate & Strawberry',
-            description: 'A dessert pizza finished with smooth ganache, fresh strawberries, and a light crisp topping.',
-            price: 'Starting at $11',
-            imageLabel: 'Dessert placeholder',
-            cta: 'Order dessert pizza',
-            whatsappMessage: 'Hello! I want to order the Chocolate & Strawberry dessert pizza from Ja Eh.',
-          },
-        ],
+          'The section now pulls from a structured neighborhood-style menu dataset instead of ad hoc showcase items.',
+        ctaLabel: 'Order this pizza',
+        ingredientsLabel: 'Ingredients',
+        sizesLabel: 'Size',
       },
       promo: {
         eyebrow: 'Weekly special',
@@ -575,29 +906,13 @@ export const siteContent: Record<SiteLocale, LocaleContent> = {
         eyebrow: 'Menu preview',
         title: 'Categories organized to show variety without making the decision feel heavy.',
         description:
-          'The partial menu previews the experience while keeping room to move the customer toward WhatsApp or the full menu.',
-        categories: [
-          {
-            title: 'Classic Pizzas',
-            items: ['Oven Margherita', 'House Calabresa', 'Modern Portuguesa'],
-          },
-          {
-            title: 'Special Pizzas',
-            items: ['Pepperoni Arrabbiata', 'Pesto Burrata', 'Parma with Arugula'],
-          },
-          {
-            title: 'Sweet Pizzas',
-            items: ['Chocolate & Strawberry', 'Banana Cinnamon', 'Romeo and Juliet'],
-          },
-          {
-            title: 'Drinks',
-            items: ['Soft drinks', 'Craft iced tea', 'Fresh juice'],
-          },
-        ],
+          'The preview groups the house menu into real categories and shows selected flavors from each section.',
         asideTitle: 'Need the full menu?',
         asideDescription:
           'Send a message and get the complete version with sizes, add-ons, and available combo deals.',
         asideBadge: 'Fast WhatsApp service',
+        itemsLabel: 'Flavors',
+        sizesLabel: 'Available size',
       },
       testimonials: {
         eyebrow: 'Happy customers',
@@ -723,57 +1038,10 @@ export const siteContent: Record<SiteLocale, LocaleContent> = {
         eyebrow: 'Pizzas destacadas',
         title: 'Sabores pensados para abrir el apetito y empujar el clic.',
         description:
-          'Ja Eh arranca con una mezcla de clasicos deseados y recetas con firma propia, manteniendo una presentacion fuerte para portfolio y futuros clientes.',
-        items: [
-          {
-            title: 'Margherita del Horno',
-            description: 'Salsa de tomate intensa, mozzarella cremosa, albahaca fresca y aceite de oliva al salir del horno.',
-            price: 'Desde R$ 42',
-            imageLabel: 'Placeholder Margherita',
-            cta: 'Pedir esta pizza',
-            whatsappMessage: 'Hola! Quiero pedir la pizza Margherita del Horno de Ja Eh.',
-          },
-          {
-            title: 'Pepperoni Arrabbiata',
-            description: 'Pepperoni crujiente, queso generoso y un toque ligeramente picante para un sabor mas marcado.',
-            price: 'Desde R$ 48',
-            imageLabel: 'Placeholder Pepperoni',
-            cta: 'Quiero pepperoni',
-            whatsappMessage: 'Hola! Quiero pedir la pizza Pepperoni Arrabbiata de Ja Eh.',
-          },
-          {
-            title: 'Quattro Formaggi',
-            description: 'Mozzarella, gorgonzola, parmesano y catupiry en una combinacion cremosa e intensa.',
-            price: 'Desde R$ 51',
-            imageLabel: 'Placeholder Cuatro Quesos',
-            cta: 'Pedir cuatro quesos',
-            whatsappMessage: 'Hola! Quiero pedir la pizza Quattro Formaggi de Ja Eh.',
-          },
-          {
-            title: 'Calabresa de la Casa',
-            description: 'Calabresa en lonjas, cebolla morada suave, salsa de la casa y oregano tostado.',
-            price: 'Desde R$ 45',
-            imageLabel: 'Placeholder Calabresa',
-            cta: 'Pedir calabresa',
-            whatsappMessage: 'Hola! Quiero pedir la pizza Calabresa de la Casa de Ja Eh.',
-          },
-          {
-            title: 'Pesto Burrata',
-            description: 'Base verde de pesto, tomate asado, burrata cremosa y crocante delicado de frutos secos.',
-            price: 'Desde R$ 56',
-            imageLabel: 'Placeholder Burrata',
-            cta: 'Pedir burrata',
-            whatsappMessage: 'Hola! Quiero pedir la pizza Pesto Burrata de Ja Eh.',
-          },
-          {
-            title: 'Chocolate y Fresa',
-            description: 'Pizza dulce con ganache aterciopelada, fresas frescas y un toque crocante.',
-            price: 'Desde R$ 39',
-            imageLabel: 'Placeholder Dulce',
-            cta: 'Pedir pizza dulce',
-            whatsappMessage: 'Hola! Quiero pedir la pizza dulce Chocolate y Fresa de Ja Eh.',
-          },
-        ],
+          'La seccion ahora toma los sabores desde un menu estructurado de pizzeria local en lugar de tarjetas sueltas.',
+        ctaLabel: 'Pedir esta pizza',
+        ingredientsLabel: 'Ingredientes',
+        sizesLabel: 'Tamano',
       },
       promo: {
         eyebrow: 'Promocion de la semana',
@@ -822,29 +1090,13 @@ export const siteContent: Record<SiteLocale, LocaleContent> = {
         eyebrow: 'Vista previa del menu',
         title: 'Categorias organizadas para mostrar variedad sin complicar la decision.',
         description:
-          'El menu parcial anticipa la experiencia y deja espacio para llevar al cliente a WhatsApp o al menu completo.',
-        categories: [
-          {
-            title: 'Classic Pizzas',
-            items: ['Margherita del Horno', 'Calabresa de la Casa', 'Portuguesa Moderna'],
-          },
-          {
-            title: 'Special Pizzas',
-            items: ['Pepperoni Arrabbiata', 'Pesto Burrata', 'Parma con Rugula'],
-          },
-          {
-            title: 'Sweet Pizzas',
-            items: ['Chocolate y Fresa', 'Banana con Canela', 'Romeo y Julieta'],
-          },
-          {
-            title: 'Drinks',
-            items: ['Gaseosas', 'Te helado artesanal', 'Jugo natural'],
-          },
-        ],
+          'La vista previa agrupa el menu en categorias reales de la casa y muestra algunos sabores de cada una.',
         asideTitle: 'Quieres el menu completo?',
         asideDescription:
           'Envia un mensaje y recibe la version completa con tamanos, extras y combos disponibles.',
         asideBadge: 'Atencion rapida por WhatsApp',
+        itemsLabel: 'Sabores',
+        sizesLabel: 'Tamano disponible',
       },
       testimonials: {
         eyebrow: 'Clientes felices',
