@@ -563,7 +563,9 @@ export default function Home() {
                   key={item.author}
                   className="rounded-[2rem] border border-white/10 bg-white/6 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.2)]"
                 >
-                  <p className="text-lg leading-8 text-stone-100">"{item.quote}"</p>
+                  <p className="text-lg leading-8 text-stone-100">
+                    &ldquo;{item.quote}&rdquo;
+                  </p>
                   <p className="mt-6 text-base font-semibold text-amber-50">{item.author}</p>
                   <p className="mt-1 text-sm uppercase tracking-[0.2em] text-stone-400">
                     {item.detail}
