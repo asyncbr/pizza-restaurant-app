@@ -3,7 +3,19 @@ import enDictionary from '@/src/i18n/dictionaries/en';
 import esDictionary from '@/src/i18n/dictionaries/es';
 import ptBRDictionary from '@/src/i18n/dictionaries/pt-BR';
 
-export type Dictionary = typeof ptBRDictionary;
+type DeepWiden<T> = T extends string
+  ? string
+  : T extends number
+    ? number
+    : T extends boolean
+      ? boolean
+      : T extends readonly (infer Item)[]
+        ? readonly DeepWiden<Item>[]
+        : T extends object
+          ? { [Key in keyof T]: DeepWiden<T[Key]> }
+          : T;
+
+export type Dictionary = DeepWiden<typeof ptBRDictionary>;
 
 const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
   'pt-BR': async () => ptBRDictionary,

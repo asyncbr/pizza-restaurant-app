@@ -1,6 +1,6 @@
 # pizza-restaurant-app
 
-Landing page for the Ja Eh pizza restaurant brand, built with Next.js.
+Landing page for the Jae Pizzas pizza restaurant brand, built with Next.js.
 
 The project is intentionally focused on presentation and lead generation:
 

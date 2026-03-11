@@ -1,8 +1,8 @@
 export const siteConfig = {
-  brandName: 'Ja Eh',
-  instagramUrl: 'https://instagram.com/jaehpizza',
+  brandName: 'Jae Pizzas',
+  instagramUrl: 'https://instagram.com/jaepizzas',
   whatsappNumber: '5511999999999',
-  contactEmail: 'contato@jaehpizza.com',
+  contactEmail: 'contato@jaepizzas.com',
   address: 'Rua das Palmeiras, 240 - Centro, Sao Paulo - SP',
 } as const;
 
@@ -60,7 +60,7 @@ export type RestaurantMenu = {
 };
 
 export const jaEhPizzaMenu: RestaurantMenu = {
-  brand: 'Ja Eh',
+  brand: 'Jae Pizzas',
   currency: 'BRL',
   defaultLanguage: 'pt-BR',
   sizes: [

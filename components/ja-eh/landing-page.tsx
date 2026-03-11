@@ -32,13 +32,13 @@ function SectionHeading({
 }) {
   return (
     <div className="max-w-3xl">
-      <p className={`text-sm font-semibold uppercase tracking-[0.32em] ${invert ? 'text-red-200/80' : 'text-red-700/80'}`}>
+      <p className={`text-sm font-semibold uppercase tracking-[0.32em] ${invert ? 'text-brand-gold/80' : 'text-brand-red/80'}`}>
         {eyebrow}
       </p>
-      <h2 className={`mt-4 text-3xl font-semibold tracking-tight sm:text-4xl ${invert ? 'text-stone-50' : 'text-stone-950'}`}>
+      <h2 className={`mt-4 text-3xl font-semibold tracking-tight sm:text-4xl ${invert ? 'text-brand-creamLight' : 'text-brand-text'}`}>
         {title}
       </h2>
-      <p className={`mt-4 text-base leading-7 sm:text-lg ${invert ? 'text-stone-200/80' : 'text-stone-700'}`}>
+      <p className={`mt-4 text-base leading-7 sm:text-lg ${invert ? 'text-brand-cream/80' : 'text-brand-brownSoft'}`}>
         {description}
       </p>
     </div>
@@ -47,7 +47,7 @@ function SectionHeading({
 
 function IconBadge({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-red-600 text-amber-50 shadow-[0_12px_24px_rgba(220,38,38,0.28)]">
+    <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-red text-brand-cream shadow-[0_12px_24px_rgba(191,50,17,0.28)]">
       {children}
     </span>
   );
@@ -87,21 +87,26 @@ function getPizzaCopy(
 
 function NavbarSection({ locale, dictionary }: { locale: Locale; dictionary: Dictionary['navbar'] }) {
   return (
-    <header className="sticky top-4 z-30 rounded-[2rem] border border-white/10 bg-stone-950/70 px-4 py-4 shadow-[0_30px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-6">
+    <header className="sticky top-4 z-30 rounded-[2rem] border border-brand-border/40 bg-brand-brown/90 px-4 py-4 shadow-[0_30px_80px_rgba(29,13,3,0.28)] backdrop-blur-xl sm:px-6">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <a href="#home" className="min-w-0 flex-1">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-red-200/70">{dictionary.brandTag}</p>
-          <p className="mt-2 text-2xl font-semibold tracking-[0.08em] text-stone-50">{siteConfig.brandName}</p>
+        <a href="#home" className="flex min-w-0 flex-1 items-center gap-4">
+          <div className="overflow-hidden rounded-2xl border border-brand-border/50 bg-brand-cream p-1 shadow-[0_12px_30px_rgba(29,13,3,0.18)]">
+            <Image src="/jae-logo.png" alt={`${siteConfig.brandName} logo`} width={60} height={60} className="h-14 w-14 rounded-xl object-cover" />
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brand-gold/80">{dictionary.brandTag}</p>
+            <p className="mt-2 text-2xl font-semibold tracking-[0.08em] text-brand-creamLight">{siteConfig.brandName}</p>
+          </div>
         </a>
-        <nav aria-label="Primary" className="grid grid-cols-2 gap-2 text-sm text-stone-300 sm:flex sm:flex-wrap sm:items-center sm:gap-5">
-          <a href="#home" className="rounded-full border border-white/8 bg-white/4 px-3 py-2 text-center transition hover:border-red-400/40 hover:text-white sm:border-0 sm:bg-transparent sm:px-0 sm:py-0">{dictionary.links.home}</a>
-          <a href="#menu" className="rounded-full border border-white/8 bg-white/4 px-3 py-2 text-center transition hover:border-red-400/40 hover:text-white sm:border-0 sm:bg-transparent sm:px-0 sm:py-0">{dictionary.links.menu}</a>
-          <a href="#about" className="rounded-full border border-white/8 bg-white/4 px-3 py-2 text-center transition hover:border-red-400/40 hover:text-white sm:border-0 sm:bg-transparent sm:px-0 sm:py-0">{dictionary.links.about}</a>
-          <a href="#contact" className="rounded-full border border-white/8 bg-white/4 px-3 py-2 text-center transition hover:border-red-400/40 hover:text-white sm:border-0 sm:bg-transparent sm:px-0 sm:py-0">{dictionary.links.contact}</a>
+        <nav aria-label="Primary" className="grid grid-cols-2 gap-2 text-sm text-brand-cream sm:flex sm:flex-wrap sm:items-center sm:gap-5">
+          <a href="#home" className="rounded-full border border-brand-border/25 bg-brand-cream/5 px-3 py-2 text-center transition hover:border-brand-gold/50 hover:text-brand-creamLight sm:border-0 sm:bg-transparent sm:px-0 sm:py-0">{dictionary.links.home}</a>
+          <a href="#menu" className="rounded-full border border-brand-border/25 bg-brand-cream/5 px-3 py-2 text-center transition hover:border-brand-gold/50 hover:text-brand-creamLight sm:border-0 sm:bg-transparent sm:px-0 sm:py-0">{dictionary.links.menu}</a>
+          <a href="#about" className="rounded-full border border-brand-border/25 bg-brand-cream/5 px-3 py-2 text-center transition hover:border-brand-gold/50 hover:text-brand-creamLight sm:border-0 sm:bg-transparent sm:px-0 sm:py-0">{dictionary.links.about}</a>
+          <a href="#contact" className="rounded-full border border-brand-border/25 bg-brand-cream/5 px-3 py-2 text-center transition hover:border-brand-gold/50 hover:text-brand-creamLight sm:border-0 sm:bg-transparent sm:px-0 sm:py-0">{dictionary.links.contact}</a>
         </nav>
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <LocaleSwitcher currentLocale={locale} labels={dictionary} />
-          <a href="#contact" className="rounded-full bg-red-600 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-red-500">
+          <a href="#contact" className="rounded-full bg-brand-orange px-5 py-3 text-center text-sm font-semibold text-brand-creamLight transition hover:bg-brand-orangeSoft">
             {dictionary.ctaLabel}
           </a>
         </div>
@@ -114,33 +119,33 @@ function HeroSection({ dictionary }: { dictionary: Dictionary['hero'] }) {
   return (
     <section id="home" className="grid gap-10 pb-20 pt-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:pt-20">
       <div>
-        <p className="text-sm font-semibold uppercase tracking-[0.32em] text-red-200/78">{dictionary.eyebrow}</p>
-        <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.95] tracking-tight text-stone-50 sm:text-6xl lg:text-7xl">{dictionary.title}</h1>
-        <p className="mt-6 max-w-2xl text-base leading-8 text-stone-300 sm:text-lg">{dictionary.description}</p>
+        <p className="text-sm font-semibold uppercase tracking-[0.32em] text-brand-gold/80">{dictionary.eyebrow}</p>
+        <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.95] tracking-tight text-brand-creamLight sm:text-6xl lg:text-7xl">{dictionary.title}</h1>
+        <p className="mt-6 max-w-2xl text-base leading-8 text-brand-cream/85 sm:text-lg">{dictionary.description}</p>
         <div className="mt-7 flex flex-wrap gap-3">
           {[dictionary.chips.delivery, dictionary.chips.pickup, dictionary.chips.familyCombo].map((chip) => (
-            <span key={chip} className="rounded-full border border-red-300/20 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-100">{chip}</span>
+            <span key={chip} className="rounded-full border border-brand-border/35 bg-brand-orange/12 px-4 py-2 text-sm font-medium text-brand-creamLight">{chip}</span>
           ))}
         </div>
         <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-          <a href="#contact" className="rounded-full bg-red-600 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-red-500">{dictionary.primaryCta}</a>
-          <a href="#menu" className="rounded-full border border-stone-500/50 bg-white/4 px-6 py-3 text-center text-sm font-semibold text-stone-100 transition hover:border-stone-300 hover:bg-white/8">{dictionary.secondaryCta}</a>
+          <a href="#contact" className="rounded-full bg-brand-red px-6 py-3 text-center text-sm font-semibold text-brand-creamLight transition hover:bg-brand-orange">{dictionary.primaryCta}</a>
+          <a href="#menu" className="rounded-full border border-brand-border/45 bg-brand-cream/5 px-6 py-3 text-center text-sm font-semibold text-brand-creamLight transition hover:border-brand-gold hover:bg-brand-cream/10">{dictionary.secondaryCta}</a>
         </div>
         <div className="mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
           {Object.values(dictionary.stats).map((item) => (
-            <div key={item.label} className="rounded-[1.75rem] border border-white/10 bg-white/6 px-5 py-5 shadow-[0_20px_50px_rgba(0,0,0,0.18)]">
-              <p className="text-2xl font-semibold text-amber-50">{item.value}</p>
-              <p className="mt-2 text-sm uppercase tracking-[0.18em] text-stone-400">{item.label}</p>
+            <div key={item.label} className="rounded-[1.75rem] border border-brand-border/30 bg-brand-brownSoft/50 px-5 py-5 shadow-[0_20px_50px_rgba(29,13,3,0.18)]">
+              <p className="text-2xl font-semibold text-brand-gold">{item.value}</p>
+              <p className="mt-2 text-sm uppercase tracking-[0.18em] text-brand-cream/75">{item.label}</p>
             </div>
           ))}
         </div>
       </div>
-      <div className="relative overflow-hidden rounded-[2.5rem] border border-red-300/10 bg-[radial-gradient(circle_at_top,#f97316_0%,#b91c1c_35%,#1f1a17_100%)] p-5 shadow-[0_30px_90px_rgba(0,0,0,0.35)] sm:p-7">
-        <div className="absolute -right-14 top-6 h-40 w-40 rounded-full bg-amber-200/20 blur-3xl" />
-        <div className="absolute -left-10 bottom-2 h-48 w-48 rounded-full bg-green-500/15 blur-3xl" />
-        <div className="relative rounded-[2rem] border border-white/14 bg-stone-950/35 p-5 backdrop-blur">
-          <div className="rounded-[1.8rem] border border-white/10 bg-[radial-gradient(circle_at_50%_44%,#fef3c7_0%,#f59e0b_20%,#dc2626_48%,#5b130f_100%)] p-4 sm:p-5">
-            <div className="overflow-hidden rounded-[1.6rem] border border-white/15 shadow-[0_24px_60px_rgba(0,0,0,0.28)]">
+      <div className="relative overflow-hidden rounded-[2.5rem] border border-brand-border/25 bg-[radial-gradient(circle_at_top,#DE9943_0%,#BF3211_34%,#512D10_100%)] p-5 shadow-[0_30px_90px_rgba(29,13,3,0.35)] sm:p-7">
+        <div className="absolute -right-14 top-6 h-40 w-40 rounded-full bg-brand-gold/20 blur-3xl" />
+        <div className="absolute -left-10 bottom-2 h-48 w-48 rounded-full bg-brand-green/18 blur-3xl" />
+        <div className="relative rounded-[2rem] border border-brand-cream/20 bg-brand-brown/35 p-5 backdrop-blur">
+          <div className="rounded-[1.8rem] border border-brand-cream/20 bg-[radial-gradient(circle_at_50%_44%,#FEF2D8_0%,#FACD74_18%,#DE9943_42%,#BF3211_68%,#633816_100%)] p-4 sm:p-5">
+            <div className="overflow-hidden rounded-[1.6rem] border border-brand-cream/20 shadow-[0_24px_60px_rgba(29,13,3,0.28)]">
               <Image
                 src="/pizza-destak.png"
                 alt={dictionary.visual.title}
@@ -152,13 +157,13 @@ function HeroSection({ dictionary }: { dictionary: Dictionary['hero'] }) {
             </div>
           </div>
           <div className="mt-5 grid gap-4 sm:grid-cols-[0.9fr_1.1fr]">
-            <div className="rounded-[1.5rem] border border-white/10 bg-white/8 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-red-200/70">{dictionary.visual.eyebrow}</p>
-              <p className="mt-3 text-xl font-semibold text-stone-50">{dictionary.visual.title}</p>
+            <div className="rounded-[1.5rem] border border-brand-cream/18 bg-brand-brownSoft/65 p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold/80">{dictionary.visual.eyebrow}</p>
+              <p className="mt-3 text-xl font-semibold text-brand-creamLight">{dictionary.visual.title}</p>
             </div>
-            <div className="rounded-[1.5rem] bg-amber-50 p-4 text-stone-900">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-700/75">{dictionary.visual.placeholderLabel}</p>
-              <p className="mt-3 text-sm leading-6 text-stone-700">{dictionary.visual.description}</p>
+            <div className="rounded-[1.5rem] bg-brand-cream p-4 text-brand-text">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-red/80">{dictionary.visual.placeholderLabel}</p>
+              <p className="mt-3 text-sm leading-6 text-brand-brownSoft">{dictionary.visual.description}</p>
             </div>
           </div>
         </div>
@@ -170,7 +175,7 @@ function HeroSection({ dictionary }: { dictionary: Dictionary['hero'] }) {
 function FeaturedSection({ locale, dictionary }: { locale: Locale; dictionary: Dictionary['menuPreview'] }) {
   const featuredPizzas = getFeaturedPizzas();
   return (
-    <section id="featured" className="rounded-[2.5rem] bg-[#f6ead8] px-5 py-16 text-stone-900 sm:px-8 lg:px-10">
+    <section id="featured" className="rounded-[2.5rem] bg-brand-cream px-5 py-16 text-brand-text sm:px-8 lg:px-10">
       <SectionHeading eyebrow={dictionary.featured.eyebrow} title={dictionary.featured.title} description={dictionary.featured.description} />
       <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {featuredPizzas.map((item, index) => {
@@ -179,10 +184,10 @@ function FeaturedSection({ locale, dictionary }: { locale: Locale; dictionary: D
             getSizeLabel(dictionary, sizeId)
           );
           return (
-            <article key={item.slug} className="overflow-hidden rounded-[2rem] border border-stone-900/8 bg-white shadow-[0_24px_60px_rgba(77,46,24,0.14)]">
+            <article key={item.slug} className="overflow-hidden rounded-[2rem] border border-brand-border/18 bg-brand-creamLight shadow-[0_24px_60px_rgba(81,45,16,0.14)]">
               <div className={`p-5 ${index % 3 === 0 ? 'bg-[radial-gradient(circle_at_top,#fde68a_0%,#fb7185_45%,#881337_100%)]' : index % 3 === 1 ? 'bg-[radial-gradient(circle_at_top,#fcd34d_0%,#dc2626_45%,#292524_100%)]' : 'bg-[radial-gradient(circle_at_top,#86efac_0%,#ea580c_45%,#431407_100%)]'}`}>
                 {item.image === '/calabresa.png' ? (
-                  <div className="overflow-hidden rounded-[1.5rem] border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.22)]">
+                <div className="overflow-hidden rounded-[1.5rem] border border-brand-cream/18 shadow-[0_20px_50px_rgba(81,45,16,0.22)]">
                     <Image
                       src={item.image}
                       alt={copy.imageAlt}
@@ -192,28 +197,28 @@ function FeaturedSection({ locale, dictionary }: { locale: Locale; dictionary: D
                     />
                   </div>
                 ) : (
-                  <div role="img" aria-label={copy.imageAlt} className="flex aspect-[4/3] items-end rounded-[1.5rem] border border-white/15 bg-black/18 p-4">
-                    <span className="rounded-full bg-white/88 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900">{copy.name}</span>
+                  <div role="img" aria-label={copy.imageAlt} className="flex aspect-[4/3] items-end rounded-[1.5rem] border border-brand-cream/18 bg-brand-brown/18 p-4">
+                    <span className="rounded-full bg-brand-cream/88 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-brand-text">{copy.name}</span>
                   </div>
                 )}
               </div>
               <div className="flex h-full flex-col p-6">
                 <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-2xl font-semibold text-stone-950">{copy.name}</h3>
-                  <span className="rounded-full bg-red-50 px-3 py-1 text-sm font-semibold text-red-700">{formatPrice(locale, item.price)}</span>
+                  <h3 className="text-2xl font-semibold text-brand-text">{copy.name}</h3>
+                  <span className="rounded-full bg-brand-surface px-3 py-1 text-sm font-semibold text-brand-red">{formatPrice(locale, item.price)}</span>
                 </div>
-                <p className="mt-4 text-sm leading-7 text-stone-700">{copy.description}</p>
-                <div className="mt-5 grid gap-3 text-sm text-stone-700">
+                <p className="mt-4 text-sm leading-7 text-brand-brownSoft">{copy.description}</p>
+                <div className="mt-5 grid gap-3 text-sm text-brand-brownSoft">
                   <div>
-                    <p className="font-semibold text-stone-950">{dictionary.featured.ingredientsLabel}</p>
+                    <p className="font-semibold text-brand-text">{dictionary.featured.ingredientsLabel}</p>
                     <p className="mt-1 leading-6">{copy.ingredients.join(', ')}</p>
                   </div>
                   <div>
-                    <p className="font-semibold text-stone-950">{dictionary.featured.sizesLabel}</p>
+                    <p className="font-semibold text-brand-text">{dictionary.featured.sizesLabel}</p>
                     <p className="mt-1 leading-6">{sizeLabels.join(', ')}</p>
                   </div>
                 </div>
-                <a href={buildWhatsAppLink(copy.whatsappMessage)} target="_blank" rel="noreferrer" className="mt-auto pt-6 inline-flex rounded-full bg-stone-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-stone-800">
+                <a href={buildWhatsAppLink(copy.whatsappMessage)} target="_blank" rel="noreferrer" className="mt-auto inline-flex rounded-full bg-brand-red px-5 py-3 text-sm font-semibold text-brand-creamLight transition hover:bg-brand-orange">
                   {dictionary.featured.ctaLabel}
                 </a>
               </div>
@@ -228,16 +233,16 @@ function FeaturedSection({ locale, dictionary }: { locale: Locale; dictionary: D
 function PromoSection({ dictionary, contact }: { dictionary: Dictionary['menuPreview']['promo']; contact: Dictionary['contact'] }) {
   return (
     <section className="py-8">
-      <div className="rounded-[2.25rem] border border-red-300/15 bg-[linear-gradient(135deg,#8a1c1d_0%,#db3b23_48%,#f59e0b_100%)] p-[1px] shadow-[0_24px_70px_rgba(0,0,0,0.22)]">
-        <div className="grid gap-6 rounded-[2.2rem] bg-stone-950/86 px-6 py-8 sm:px-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+      <div className="rounded-[2.25rem] border border-brand-border/30 bg-[linear-gradient(135deg,#512D10_0%,#BF3211_48%,#FACD74_100%)] p-[1px] shadow-[0_24px_70px_rgba(81,45,16,0.22)]">
+        <div className="grid gap-6 rounded-[2.2rem] bg-brand-brown/92 px-6 py-8 sm:px-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-red-200/80">{dictionary.eyebrow}</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">{dictionary.title}</h2>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-stone-300">{dictionary.subtitle}</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand-gold/80">{dictionary.eyebrow}</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-brand-creamLight sm:text-4xl">{dictionary.title}</h2>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-brand-cream/82">{dictionary.subtitle}</p>
           </div>
-          <div className="rounded-[1.75rem] bg-white/8 p-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-amber-200/75">{dictionary.highlightTag}</p>
-            <a href={buildWhatsAppLink(contact.whatsappMessage)} target="_blank" rel="noreferrer" className="mt-5 inline-flex rounded-full bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-500">
+          <div className="rounded-[1.75rem] bg-brand-cream/8 p-5">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-gold/80">{dictionary.highlightTag}</p>
+            <a href={buildWhatsAppLink(contact.whatsappMessage)} target="_blank" rel="noreferrer" className="mt-5 inline-flex rounded-full bg-brand-orange px-5 py-3 text-sm font-semibold text-brand-creamLight transition hover:bg-brand-orangeSoft">
               {dictionary.ctaLabel}
             </a>
           </div>
@@ -251,14 +256,14 @@ function BenefitsSection({ dictionary }: { dictionary: Dictionary['benefits'] })
   const items = [dictionary.items.freshIngredients, dictionary.items.handcraftedDough, dictionary.items.fastDelivery, dictionary.items.boldFlavor];
   const icons = [<LeafIcon key="leaf" />, <PizzaIcon key="pizza" />, <DeliveryIcon key="delivery" />, <FlameIcon key="flame" />];
   return (
-    <section className="rounded-[2.5rem] bg-[#15110f] px-5 py-16 sm:px-8 lg:px-10">
+    <section className="rounded-[2.5rem] bg-brand-brown px-5 py-16 sm:px-8 lg:px-10">
       <SectionHeading eyebrow={dictionary.eyebrow} title={dictionary.title} description={dictionary.description} invert />
       <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         {items.map((item, index) => (
-          <article key={item.title} className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.18)]">
+          <article key={item.title} className="rounded-[1.75rem] border border-brand-border/25 bg-brand-brownSoft/65 p-6 shadow-[0_18px_50px_rgba(29,13,3,0.18)]">
             <IconBadge>{icons[index]}</IconBadge>
-            <h3 className="mt-5 text-xl font-semibold text-stone-50">{item.title}</h3>
-            <p className="mt-3 text-sm leading-7 text-stone-300">{item.description}</p>
+            <h3 className="mt-5 text-xl font-semibold text-brand-creamLight">{item.title}</h3>
+            <p className="mt-3 text-sm leading-7 text-brand-cream/80">{item.description}</p>
           </article>
         ))}
       </div>
@@ -269,17 +274,17 @@ function BenefitsSection({ dictionary }: { dictionary: Dictionary['benefits'] })
 function AboutSection({ dictionary, images }: { dictionary: Dictionary['about']; images: Dictionary['images'] }) {
   return (
     <section id="about" className="grid gap-8 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-      <div className="rounded-[2.5rem] border border-white/10 bg-[#f6ead8] p-6 text-stone-900 shadow-[0_22px_60px_rgba(0,0,0,0.16)] sm:p-8">
+      <div className="rounded-[2.5rem] border border-brand-border/20 bg-brand-cream p-6 text-brand-text shadow-[0_22px_60px_rgba(81,45,16,0.16)] sm:p-8">
         <SectionHeading eyebrow={dictionary.eyebrow} title={dictionary.title} description={dictionary.description} />
-        <div className="mt-8 rounded-[2rem] bg-stone-950 p-6 text-stone-100">
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-red-200/75">{dictionary.storyTitle}</p>
-          <p className="mt-4 text-base leading-8 text-stone-300">{dictionary.story}</p>
+        <div className="mt-8 rounded-[2rem] bg-brand-brown p-6 text-brand-creamLight">
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand-gold/80">{dictionary.storyTitle}</p>
+          <p className="mt-4 text-base leading-8 text-brand-cream/80">{dictionary.story}</p>
         </div>
       </div>
-      <div className="rounded-[2.5rem] border border-red-200/10 bg-[linear-gradient(180deg,#4a1715_0%,#181211_100%)] p-6 shadow-[0_26px_80px_rgba(0,0,0,0.28)]">
-        <div role="img" aria-label={images.aboutAlt} className="flex min-h-[420px] flex-col justify-end rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,#f59e0b_0%,#dc2626_35%,#1c1917_100%)] p-6">
-          <span className="inline-flex w-fit rounded-full bg-amber-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-red-700">{dictionary.imageLabel}</span>
-          <p className="mt-4 max-w-md text-lg font-semibold text-stone-50">{dictionary.imageDescription}</p>
+      <div className="rounded-[2.5rem] border border-brand-border/20 bg-[linear-gradient(180deg,#633816_0%,#512D10_100%)] p-6 shadow-[0_26px_80px_rgba(81,45,16,0.28)]">
+        <div role="img" aria-label={images.aboutAlt} className="flex min-h-[420px] flex-col justify-end rounded-[2rem] border border-brand-cream/12 bg-[radial-gradient(circle_at_top,#FACD74_0%,#DE9943_26%,#BF3211_54%,#512D10_100%)] p-6">
+          <span className="inline-flex w-fit rounded-full bg-brand-cream px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-brand-red">{dictionary.imageLabel}</span>
+          <p className="mt-4 max-w-md text-lg font-semibold text-brand-creamLight">{dictionary.imageDescription}</p>
         </div>
       </div>
     </section>
@@ -289,7 +294,7 @@ function AboutSection({ dictionary, images }: { dictionary: Dictionary['about'];
 function MenuPreviewSection({ locale, dictionary, contact }: { locale: Locale; dictionary: Dictionary['menuPreview']; contact: Dictionary['contact'] }) {
   const orderedCategories = getOrderedMenuCategories();
   return (
-    <section id="menu" className="grid gap-6 rounded-[2.5rem] bg-[#f6ead8] px-5 py-16 text-stone-900 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
+    <section id="menu" className="grid gap-6 rounded-[2.5rem] bg-brand-cream px-5 py-16 text-brand-text sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
       <div>
         <SectionHeading eyebrow={dictionary.eyebrow} title={dictionary.title} description={dictionary.description} />
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -297,22 +302,22 @@ function MenuPreviewSection({ locale, dictionary, contact }: { locale: Locale; d
             const categoryCopy = dictionary.categories[category.id];
             const pizzas = getPizzasByCategory(category.id).slice(0, 3);
             return (
-              <article key={category.id} className="rounded-[1.75rem] border border-stone-900/8 bg-white px-5 py-6 shadow-[0_18px_40px_rgba(77,46,24,0.08)]">
-                <h3 className="text-lg font-semibold text-stone-950">{categoryCopy.name}</h3>
-                <p className="mt-2 text-sm leading-6 text-stone-600">{categoryCopy.description}</p>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-red-700/75">{dictionary.categoriesTitle}</p>
+              <article key={category.id} className="rounded-[1.75rem] border border-brand-border/20 bg-brand-creamLight px-5 py-6 shadow-[0_18px_40px_rgba(81,45,16,0.08)]">
+                <h3 className="text-lg font-semibold text-brand-text">{categoryCopy.name}</h3>
+                <p className="mt-2 text-sm leading-6 text-brand-brownSoft">{categoryCopy.description}</p>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-brand-red/80">{dictionary.categoriesTitle}</p>
                 <ul className="mt-3 space-y-3">
                   {pizzas.map((pizza) => {
                     const copy = getPizzaCopy(dictionary, pizza.slug);
                     return (
-                      <li key={pizza.slug} className="rounded-2xl bg-stone-50 px-4 py-3 text-sm text-stone-700">
+                      <li key={pizza.slug} className="rounded-2xl bg-brand-cream px-4 py-3 text-sm text-brand-brownSoft">
                         <div className="flex items-start justify-between gap-4">
                           <div>
-                            <p className="font-semibold text-stone-950">{copy.name}</p>
-                            <p className="mt-1 text-xs leading-5 text-stone-600">{formatPrice(locale, pizza.price)}</p>
+                            <p className="font-semibold text-brand-text">{copy.name}</p>
+                            <p className="mt-1 text-xs leading-5 text-brand-brownSoft">{formatPrice(locale, pizza.price)}</p>
                           </div>
-                          <span className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-700">
-                            {dictionary.sizesTitle}: {getSizeLabel(dictionary, pizza.sizesAvailable[0])}
+                          <span className="rounded-full bg-brand-surface px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-brown">
+                            {getSizeLabel(dictionary, pizza.sizesAvailable[0])}
                           </span>
                         </div>
                       </li>
@@ -324,15 +329,15 @@ function MenuPreviewSection({ locale, dictionary, contact }: { locale: Locale; d
           })}
         </div>
       </div>
-      <aside className="rounded-[2rem] bg-stone-950 p-6 text-stone-100 shadow-[0_22px_50px_rgba(0,0,0,0.22)] sm:p-8">
-        <span className="inline-flex rounded-full bg-red-600/20 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-red-100">{dictionary.asideBadge}</span>
-        <h3 className="mt-5 text-3xl font-semibold tracking-tight text-white">{dictionary.asideTitle}</h3>
-        <p className="mt-4 text-base leading-8 text-stone-300">{dictionary.asideDescription}</p>
+      <aside className="rounded-[2rem] bg-brand-brown p-6 text-brand-creamLight shadow-[0_22px_50px_rgba(29,13,3,0.22)] sm:p-8">
+        <span className="inline-flex rounded-full bg-brand-red/20 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-brand-creamLight">{dictionary.asideBadge}</span>
+        <h3 className="mt-5 text-3xl font-semibold tracking-tight text-brand-creamLight">{dictionary.asideTitle}</h3>
+        <p className="mt-4 text-base leading-8 text-brand-cream/82">{dictionary.asideDescription}</p>
         <div className="mt-8 flex flex-col gap-3">
-          <a href={buildWhatsAppLink(contact.whatsappMessage)} target="_blank" rel="noreferrer" className="rounded-full bg-red-600 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-red-500">
+          <a href={buildWhatsAppLink(contact.whatsappMessage)} target="_blank" rel="noreferrer" className="rounded-full bg-brand-orange px-5 py-3 text-center text-sm font-semibold text-brand-creamLight transition hover:bg-brand-orangeSoft">
             {dictionary.requestFullMenu}
           </a>
-          <a href={buildWhatsAppLink(contact.whatsappMessage)} target="_blank" rel="noreferrer" className="rounded-full border border-white/15 px-5 py-3 text-center text-sm font-semibold text-stone-100 transition hover:bg-white/8">
+          <a href={buildWhatsAppLink(contact.whatsappMessage)} target="_blank" rel="noreferrer" className="rounded-full border border-brand-border/35 px-5 py-3 text-center text-sm font-semibold text-brand-creamLight transition hover:bg-brand-cream/8">
             {dictionary.whatsappOrder}
           </a>
         </div>
@@ -347,10 +352,10 @@ function SocialProofSection({ dictionary }: { dictionary: Dictionary['socialProo
       <SectionHeading eyebrow={dictionary.eyebrow} title={dictionary.title} description={dictionary.description} invert />
       <div className="mt-10 grid gap-5 lg:grid-cols-3">
         {dictionary.items.map((item) => (
-          <article key={item.author} className="rounded-[2rem] border border-white/10 bg-white/6 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.2)]">
-            <p className="text-lg leading-8 text-stone-100">&ldquo;{item.quote}&rdquo;</p>
-            <p className="mt-6 text-base font-semibold text-amber-50">{item.author}</p>
-            <p className="mt-1 text-sm uppercase tracking-[0.2em] text-stone-400">{item.detail}</p>
+          <article key={item.author} className="rounded-[2rem] border border-brand-border/25 bg-brand-brownSoft/60 p-6 shadow-[0_18px_50px_rgba(29,13,3,0.2)]">
+            <p className="text-lg leading-8 text-brand-cream">&ldquo;{item.quote}&rdquo;</p>
+            <p className="mt-6 text-base font-semibold text-brand-gold">{item.author}</p>
+            <p className="mt-1 text-sm uppercase tracking-[0.2em] text-brand-cream/70">{item.detail}</p>
           </article>
         ))}
       </div>
@@ -390,41 +395,41 @@ function ContactSection({ locale, contact, form }: { locale: Locale; contact: Di
   };
 
   return (
-    <section id="contact" className="grid gap-6 rounded-[2.5rem] bg-[#f6ead8] px-5 py-16 text-stone-900 sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-10">
+    <section id="contact" className="grid gap-6 rounded-[2.5rem] bg-brand-cream px-5 py-16 text-brand-text sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-10">
       <div>
         <SectionHeading eyebrow={contact.eyebrow} title={contact.title} description={contact.description} />
-        <form onSubmit={handleSubmit} className="mt-10 rounded-[2rem] border border-stone-900/8 bg-white p-6 shadow-[0_18px_50px_rgba(77,46,24,0.12)] sm:p-8">
-          <h3 className="text-2xl font-semibold text-stone-950">{form.title}</h3>
-          <p className="mt-3 text-sm leading-7 text-stone-700">{form.description}</p>
+        <form onSubmit={handleSubmit} className="mt-10 rounded-[2rem] border border-brand-border/18 bg-brand-creamLight p-6 shadow-[0_18px_50px_rgba(81,45,16,0.12)] sm:p-8">
+          <h3 className="text-2xl font-semibold text-brand-text">{form.title}</h3>
+          <p className="mt-3 text-sm leading-7 text-brand-brownSoft">{form.description}</p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            <label className="grid gap-2 text-sm font-medium text-stone-800">{form.fields.name}<input type="text" value={formState.name} onChange={(event) => handleFieldChange('name', event.target.value)} placeholder={form.placeholders.name} className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 outline-none transition focus:border-red-500 focus:bg-white" /></label>
-            <label className="grid gap-2 text-sm font-medium text-stone-800">{form.fields.email}<input type="email" value={formState.email} onChange={(event) => handleFieldChange('email', event.target.value)} placeholder={form.placeholders.email} className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 outline-none transition focus:border-red-500 focus:bg-white" /></label>
-            <label className="grid gap-2 text-sm font-medium text-stone-800">{form.fields.phone}<input type="text" value={formState.phone} onChange={(event) => handleFieldChange('phone', event.target.value)} placeholder={form.placeholders.phone} className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 outline-none transition focus:border-red-500 focus:bg-white" /></label>
-            <label className="grid gap-2 text-sm font-medium text-stone-800">{form.fields.subject}<input type="text" value={formState.subject} onChange={(event) => handleFieldChange('subject', event.target.value)} placeholder={form.placeholders.subject} className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 outline-none transition focus:border-red-500 focus:bg-white" /></label>
+            <label className="grid gap-2 text-sm font-medium text-brand-brown">{form.fields.name}<input type="text" value={formState.name} onChange={(event) => handleFieldChange('name', event.target.value)} placeholder={form.placeholders.name} className="rounded-2xl border border-brand-border/25 bg-brand-cream px-4 py-3 outline-none transition focus:border-brand-orange focus:bg-white" /></label>
+            <label className="grid gap-2 text-sm font-medium text-brand-brown">{form.fields.email}<input type="email" value={formState.email} onChange={(event) => handleFieldChange('email', event.target.value)} placeholder={form.placeholders.email} className="rounded-2xl border border-brand-border/25 bg-brand-cream px-4 py-3 outline-none transition focus:border-brand-orange focus:bg-white" /></label>
+            <label className="grid gap-2 text-sm font-medium text-brand-brown">{form.fields.phone}<input type="text" value={formState.phone} onChange={(event) => handleFieldChange('phone', event.target.value)} placeholder={form.placeholders.phone} className="rounded-2xl border border-brand-border/25 bg-brand-cream px-4 py-3 outline-none transition focus:border-brand-orange focus:bg-white" /></label>
+            <label className="grid gap-2 text-sm font-medium text-brand-brown">{form.fields.subject}<input type="text" value={formState.subject} onChange={(event) => handleFieldChange('subject', event.target.value)} placeholder={form.placeholders.subject} className="rounded-2xl border border-brand-border/25 bg-brand-cream px-4 py-3 outline-none transition focus:border-brand-orange focus:bg-white" /></label>
           </div>
-          <label className="mt-4 grid gap-2 text-sm font-medium text-stone-800">{form.fields.message}<textarea rows={5} value={formState.message} onChange={(event) => handleFieldChange('message', event.target.value)} placeholder={form.placeholders.message} className="rounded-[1.5rem] border border-stone-200 bg-stone-50 px-4 py-3 outline-none transition focus:border-red-500 focus:bg-white" /></label>
+          <label className="mt-4 grid gap-2 text-sm font-medium text-brand-brown">{form.fields.message}<textarea rows={5} value={formState.message} onChange={(event) => handleFieldChange('message', event.target.value)} placeholder={form.placeholders.message} className="rounded-[1.5rem] border border-brand-border/25 bg-brand-cream px-4 py-3 outline-none transition focus:border-brand-orange focus:bg-white" /></label>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <button type="submit" disabled={submitState === 'submitting'} className="rounded-full bg-red-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-red-500 disabled:cursor-not-allowed disabled:bg-red-300">
+            <button type="submit" disabled={submitState === 'submitting'} className="rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-brand-creamLight transition hover:bg-brand-orange disabled:cursor-not-allowed disabled:bg-brand-orangeSoft">
               {submitState === 'submitting' ? form.submitting : form.submit}
             </button>
-            <a href={buildWhatsAppLink(contact.whatsappMessage)} target="_blank" rel="noreferrer" className="text-sm font-semibold text-red-700 transition hover:text-red-900">{contact.whatsappCta}</a>
+            <a href={buildWhatsAppLink(contact.whatsappMessage)} target="_blank" rel="noreferrer" className="text-sm font-semibold text-brand-red transition hover:text-brand-orange">{contact.whatsappCta}</a>
           </div>
-          {submitState === 'validation' ? <p className="mt-4 text-sm font-medium text-red-700">{form.validationMessage}</p> : null}
+          {submitState === 'validation' ? <p className="mt-4 text-sm font-medium text-brand-red">{form.validationMessage}</p> : null}
           {submitState === 'success' ? <p className="mt-4 text-sm font-medium text-green-700">{form.successMessage}</p> : null}
-          {submitState === 'error' ? <p className="mt-4 text-sm font-medium text-red-700">{form.errorMessage}</p> : null}
+          {submitState === 'error' ? <p className="mt-4 text-sm font-medium text-brand-red">{form.errorMessage}</p> : null}
         </form>
       </div>
-      <aside className="rounded-[2rem] bg-stone-950 p-6 text-stone-100 shadow-[0_20px_60px_rgba(0,0,0,0.24)] sm:p-8">
-        <h3 className="text-2xl font-semibold text-white">{contact.infoTitle}</h3>
+      <aside className="rounded-[2rem] bg-brand-brown p-6 text-brand-creamLight shadow-[0_20px_60px_rgba(29,13,3,0.24)] sm:p-8">
+        <h3 className="text-2xl font-semibold text-brand-creamLight">{contact.infoTitle}</h3>
         <div className="mt-8 space-y-6">
-          <div><p className="text-xs font-semibold uppercase tracking-[0.28em] text-red-200/75">{contact.addressLabel}</p><p className="mt-2 text-base leading-7 text-stone-300">{contact.address}</p></div>
-          <div><p className="text-xs font-semibold uppercase tracking-[0.28em] text-red-200/75">{contact.hoursLabel}</p><p className="mt-2 text-base leading-7 text-stone-300">{contact.openingHours}</p></div>
-          <div><p className="text-xs font-semibold uppercase tracking-[0.28em] text-red-200/75">{contact.deliveryLabel}</p><p className="mt-2 text-base leading-7 text-stone-300">{contact.serviceAreaNote}</p></div>
+          <div><p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold/80">{contact.addressLabel}</p><p className="mt-2 text-base leading-7 text-brand-cream/82">{contact.address}</p></div>
+          <div><p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold/80">{contact.hoursLabel}</p><p className="mt-2 text-base leading-7 text-brand-cream/82">{contact.openingHours}</p></div>
+          <div><p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold/80">{contact.deliveryLabel}</p><p className="mt-2 text-base leading-7 text-brand-cream/82">{contact.serviceAreaNote}</p></div>
         </div>
-        <div className="mt-8 rounded-[1.75rem] border border-white/10 bg-white/6 p-5">
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-200/75">WhatsApp</p>
-          <p className="mt-2 text-lg font-semibold text-white">{contact.phone}</p>
-          <a href={buildWhatsAppLink(contact.whatsappMessage)} target="_blank" rel="noreferrer" className="mt-5 inline-flex rounded-full bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-500">{contact.whatsappCta}</a>
+        <div className="mt-8 rounded-[1.75rem] border border-brand-border/25 bg-brand-cream/8 p-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-gold/80">WhatsApp</p>
+          <p className="mt-2 text-lg font-semibold text-brand-creamLight">{contact.phone}</p>
+          <a href={buildWhatsAppLink(contact.whatsappMessage)} target="_blank" rel="noreferrer" className="mt-5 inline-flex rounded-full bg-brand-orange px-5 py-3 text-sm font-semibold text-brand-creamLight transition hover:bg-brand-orangeSoft">{contact.whatsappCta}</a>
         </div>
       </aside>
     </section>
@@ -434,32 +439,39 @@ function ContactSection({ locale, contact, form }: { locale: Locale; contact: Di
 function FooterSection({ locale, navbar, footer, contact }: { locale: Locale; navbar: Dictionary['navbar']; footer: Dictionary['footer']; contact: Dictionary['contact'] }) {
   return (
     <footer className="pb-6 pt-10">
-      <div className="rounded-[2rem] border border-white/10 bg-white/5 px-5 py-8 shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:px-8">
+      <div className="rounded-[2rem] border border-brand-border/25 bg-brand-brownSoft/65 px-5 py-8 shadow-[0_18px_50px_rgba(29,13,3,0.18)] sm:px-8">
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-red-200/75">{navbar.brandTag}</p>
-            <p className="mt-3 text-3xl font-semibold text-white">{siteConfig.brandName}</p>
-            <p className="mt-4 max-w-md text-sm leading-7 text-stone-300">{footer.description}</p>
+            <div className="flex items-center gap-4">
+              <div className="overflow-hidden rounded-2xl border border-brand-border/50 bg-brand-cream p-1">
+                <Image src="/jae-logo.png" alt={`${siteConfig.brandName} logo`} width={56} height={56} className="h-14 w-14 rounded-xl object-cover" />
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.34em] text-brand-gold/80">{navbar.brandTag}</p>
+                <p className="mt-3 text-3xl font-semibold text-brand-creamLight">{siteConfig.brandName}</p>
+              </div>
+            </div>
+            <p className="mt-4 max-w-md text-sm leading-7 text-brand-cream/80">{footer.description}</p>
           </div>
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-stone-400">{footer.navigationTitle}</p>
-            <div className="mt-4 grid gap-3 text-sm text-stone-300">
-              <a href="#home" className="transition hover:text-white">{navbar.links.home}</a>
-              <a href="#menu" className="transition hover:text-white">{navbar.links.menu}</a>
-              <a href="#about" className="transition hover:text-white">{navbar.links.about}</a>
-              <a href="#contact" className="transition hover:text-white">{navbar.links.contact}</a>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-gold/70">{footer.navigationTitle}</p>
+            <div className="mt-4 grid gap-3 text-sm text-brand-cream/82">
+              <a href="#home" className="transition hover:text-brand-creamLight">{navbar.links.home}</a>
+              <a href="#menu" className="transition hover:text-brand-creamLight">{navbar.links.menu}</a>
+              <a href="#about" className="transition hover:text-brand-creamLight">{navbar.links.about}</a>
+              <a href="#contact" className="transition hover:text-brand-creamLight">{navbar.links.contact}</a>
             </div>
           </div>
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-stone-400">{footer.socialTitle}</p>
-            <div className="mt-4 grid gap-3 text-sm text-stone-300">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-gold/70">{footer.socialTitle}</p>
+            <div className="mt-4 grid gap-3 text-sm text-brand-cream/82">
               <a href={buildWhatsAppLink(contact.whatsappMessage)} target="_blank" rel="noreferrer">{footer.whatsappLabel}</a>
               <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer">{footer.instagramLabel}</a>
               <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
             </div>
           </div>
         </div>
-        <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-5 text-sm text-stone-400 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mt-8 flex flex-col gap-4 border-t border-brand-border/25 pt-5 text-sm text-brand-cream/70 lg:flex-row lg:items-center lg:justify-between">
           <p>{footer.rights}</p>
           <LocaleSwitcher currentLocale={locale} labels={navbar} />
         </div>
@@ -475,7 +487,7 @@ export function JaEhLandingPage({ locale, dictionary }: LandingPageProps) {
         <title>{dictionary.meta.title}</title>
         <meta name="description" content={dictionary.meta.description} />
       </Head>
-      <main className="min-h-screen bg-[radial-gradient(circle_at_top,#5f1517_0%,#221917_34%,#130f0e_100%)] text-stone-100">
+      <main className="min-h-screen bg-[radial-gradient(circle_at_top,#633816_0%,#512D10_32%,#1D0D03_100%)] text-brand-creamLight">
         <div className="mx-auto max-w-7xl px-4 pb-16 pt-6 sm:px-6 lg:px-8">
           <NavbarSection locale={locale} dictionary={dictionary.navbar} />
           <HeroSection dictionary={dictionary.hero} />
