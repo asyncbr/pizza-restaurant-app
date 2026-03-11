@@ -1,0 +1,183 @@
+import type { Dictionary } from '@/src/i18n/get-dictionary';
+
+const esDictionary: Dictionary = {
+  meta: {
+    title: 'Ja Eh | Pizza artesanal lista para convertir',
+    description:
+      'Landing page de la pizzeria Ja Eh con pizzas clasicas y especiales, pedido por WhatsApp y formulario de contacto para captacion local.',
+  },
+  navbar: {
+    brandTag: 'Pizzeria urbana artesanal',
+    languageLabel: 'Idioma',
+    links: { home: 'Home', menu: 'Menu', about: 'About', contact: 'Contact' },
+    ctaLabel: 'Pedir Ahora',
+    locales: { 'pt-BR': 'PT-BR', en: 'EN', es: 'ES' },
+  },
+  hero: {
+    eyebrow:
+      'Horno caliente, masa artesanal y sabores de pizzeria de barrio en una landing page lista para portfolio',
+    title: 'La pizza que convierte la cena en un si inmediato.',
+    description:
+      'Ja Eh combina borde dorado, salsa intensa, queso cremoso y sabores brasileños muy conocidos para que delivery y retiro se sientan fuertes y comerciales.',
+    chips: { delivery: 'Delivery', pickup: 'Retiro', familyCombo: 'Noche de Pizza' },
+    stats: {
+      dispatch: { value: '25 min', label: 'promedio de salida' },
+      flavors: { value: '26 sabores', label: 'en el menu' },
+      dough: { value: '8 porciones', label: 'pizza grande' },
+    },
+    primaryCta: 'Pedir Ahora',
+    secondaryCta: 'Ver Menu',
+    visual: {
+      eyebrow: 'Destaque de la casa',
+      title: 'Bloque visual preparado para recibir la foto principal de la marca',
+      placeholderLabel: 'Placeholder visual',
+      description:
+        'La estructura esta lista para cambiar a una imagen generada o una foto profesional sin rehacer el layout.',
+    },
+  },
+  about: {
+    eyebrow: 'Sobre la marca',
+    title: 'Ja Eh nacio para ser la pizzeria del barrio con identidad clara.',
+    description:
+      'El tono mezcla cercania local, visual contemporaneo y un menu inspirado en pizzerias brasileñas reales.',
+    storyTitle: 'Una marca calida, directa y facil de recordar',
+    story:
+      'Desde la masa trabajada con cuidado hasta la atencion sin friccion, Ja Eh fue pensada para transmitir deseo, seguridad y practicidad. El resultado es una landing page de pizza lista para portfolio y para futuros clientes locales.',
+    imageLabel: 'Placeholder de cocina y ambiente',
+    imageDescription: 'Espacio reservado para una futura foto del horno, mostrador o equipo.',
+  },
+  menuPreview: {
+    eyebrow: 'Vista previa del menu',
+    title: 'Un menu mas realista, organizado como una pizzeria local.',
+    description:
+      'Las secciones de abajo usan un dataset estructurado para mostrar sabores destacados, categorias y precios base.',
+    featured: {
+      eyebrow: 'Pizzas destacadas',
+      title: 'Sabores pensados para abrir el apetito y empujar el clic.',
+      description:
+        'La seleccion principal viene del menu estructurado de Ja Eh, con clasicos y especiales que encajan en una pizzeria brasileña real.',
+      ingredientsLabel: 'Ingredientes',
+      sizesLabel: 'Tamano',
+      ctaLabel: 'Pedir esta pizza',
+      fromPriceLabel: 'desde',
+    },
+    promo: {
+      eyebrow: 'Promocion de la semana',
+      title: 'Noche de Pizza en Familia',
+      subtitle:
+        'Arma la noche perfecta con pizzas clasicas y especiales hechas para compartir.',
+      ctaLabel: 'Pide ahora',
+      highlightTag: '8 porciones',
+    },
+    categoriesTitle: 'Sabores',
+    sizesTitle: 'Tamano disponible',
+    asideTitle: 'Quieres el menu completo?',
+    asideDescription:
+      'Envia un mensaje y recibe la version completa con todos los sabores, extras y combinaciones disponibles.',
+    asideBadge: 'Atencion rapida por WhatsApp',
+    requestFullMenu: 'Solicitar Menu Completo',
+    whatsappOrder: 'Pedir por WhatsApp',
+    sizes: {
+      grande: {
+        label: 'Grande',
+        slicesLabel: '8 porciones',
+      },
+    },
+    categories: {
+      classics: { name: 'Clasicas', description: 'Sabores tradicionales que forman parte de cualquier pizzeria de barrio fuerte.' },
+      'chicken-and-meat': { name: 'Pollo y Carnes', description: 'Opciones con pollo, bacon, lomo y sabores mas intensos.' },
+      specials: { name: 'Especiales', description: 'Combinaciones con mas personalidad para destacar el menu.' },
+      'fish-and-vegetarian': { name: 'Atun y Vegetarianas', description: 'Alternativas con atun, palmito y perfiles mas ligeros.' },
+    },
+    pizzas: {
+      mussarela: { name: 'Mussarela', description: 'Clasica, simple y siempre confiable para pedidos del dia a dia.', ingredients: ['salsa de tomate', 'mussarela', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Mussarela de Ja Eh.', imageAlt: 'Placeholder de la pizza Mussarela de Ja Eh.' },
+      calabresa: { name: 'Calabresa', description: 'Uno de los sabores mas pedidos, con perfil directo y muy familiar.', ingredients: ['salsa de tomate', 'mussarela', 'calabresa en lonjas', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Calabresa de Ja Eh.', imageAlt: 'Placeholder de la pizza Calabresa de Ja Eh.' },
+      'calabresa-com-cebola': { name: 'Calabresa con Cebolla', description: 'Version tradicional con cebolla para un sabor aun mas marcado.', ingredients: ['salsa de tomate', 'mussarela', 'calabresa en lonjas', 'cebolla', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Calabresa con Cebolla de Ja Eh.', imageAlt: 'Placeholder de la pizza Calabresa con Cebolla de Ja Eh.' },
+      portuguesa: { name: 'Portuguesa', description: 'Combinacion brasileña muy conocida y facil de vender.', ingredients: ['salsa de tomate', 'mussarela', 'jamon', 'huevo', 'cebolla', 'guisantes', 'aceituna', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Portuguesa de Ja Eh.', imageAlt: 'Placeholder de la pizza Portuguesa de Ja Eh.' },
+      marguerita: { name: 'Marguerita', description: 'Ligera, elegante y excelente para destacar el visual del menu.', ingredients: ['salsa de tomate', 'mussarela', 'tomate', 'albahaca', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Marguerita de Ja Eh.', imageAlt: 'Placeholder de la pizza Marguerita de Ja Eh.' },
+      napolitana: { name: 'Napolitana', description: 'Sabor tradicional con perfil familiar y acabado bien brasileño.', ingredients: ['salsa de tomate', 'mussarela', 'tomate', 'parmesano', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Napolitana de Ja Eh.', imageAlt: 'Placeholder de la pizza Napolitana de Ja Eh.' },
+      presunto: { name: 'Jamon', description: 'Opcion directa y popular para un menu local mas enxuto.', ingredients: ['salsa de tomate', 'mussarela', 'jamon', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Jamon de Ja Eh.', imageAlt: 'Placeholder de la pizza Jamon de Ja Eh.' },
+      bacon: { name: 'Bacon', description: 'Sabor fuerte para quien prefiere una pizza mas marcada.', ingredients: ['salsa de tomate', 'mussarela', 'bacon', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Bacon de Ja Eh.', imageAlt: 'Placeholder de la pizza Bacon de Ja Eh.' },
+      frango: { name: 'Pollo', description: 'Version simple de pollo desmenuzado para un publico amplio.', ingredients: ['salsa de tomate', 'mussarela', 'pollo desmenuzado', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Pollo de Ja Eh.', imageAlt: 'Placeholder de la pizza Pollo de Ja Eh.' },
+      'frango-com-catupiry': { name: 'Pollo con Catupiry', description: 'Uno de los sabores con mejor conversion en pizzerias brasileñas.', ingredients: ['salsa de tomate', 'mussarela', 'pollo desmenuzado', 'catupiry', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Pollo con Catupiry de Ja Eh.', imageAlt: 'Placeholder de la pizza Pollo con Catupiry de Ja Eh.' },
+      'frango-com-bacon': { name: 'Pollo con Bacon', description: 'Mezcla de pollo y bacon para un perfil mas indulgente.', ingredients: ['salsa de tomate', 'mussarela', 'pollo desmenuzado', 'bacon', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Pollo con Bacon de Ja Eh.', imageAlt: 'Placeholder de la pizza Pollo con Bacon de Ja Eh.' },
+      peperoni: { name: 'Peperoni', description: 'Sabor visualmente fuerte y excelente para destacar la landing page.', ingredients: ['salsa de tomate', 'mussarela', 'peperoni', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Peperoni de Ja Eh.', imageAlt: 'Placeholder de la pizza Peperoni de Ja Eh.' },
+      lombo: { name: 'Lomo', description: 'Buena opcion para ampliar el menu con un sabor conocido.', ingredients: ['salsa de tomate', 'mussarela', 'lomo', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Lomo de Ja Eh.', imageAlt: 'Placeholder de la pizza Lomo de Ja Eh.' },
+      'lombo-com-catupiry': { name: 'Lomo con Catupiry', description: 'Combinacion fuerte para completar la seccion de carnes.', ingredients: ['salsa de tomate', 'mussarela', 'lomo', 'catupiry', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Lomo con Catupiry de Ja Eh.', imageAlt: 'Placeholder de la pizza Lomo con Catupiry de Ja Eh.' },
+      'quatro-queijos': { name: 'Cuatro Quesos', description: 'Sabor clasico especial, ideal para un menu con cara mas premium.', ingredients: ['salsa de tomate', 'mussarela', 'catupiry', 'parmesano', 'provolone', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Cuatro Quesos de Ja Eh.', imageAlt: 'Placeholder de la pizza Cuatro Quesos de Ja Eh.' },
+      'cinco-queijos': { name: 'Cinco Quesos', description: 'Variacion mas intensa para reforzar el grupo de sabores especiales.', ingredients: ['salsa de tomate', 'mussarela', 'catupiry', 'parmesano', 'provolone', 'gorgonzola', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Cinco Quesos de Ja Eh.', imageAlt: 'Placeholder de la pizza Cinco Quesos de Ja Eh.' },
+      'moda-da-casa': { name: 'Moda de la Casa', description: 'Sabor firma para dar personalidad propia al menu.', ingredients: ['salsa de tomate', 'mussarela', 'calabresa', 'jamon', 'cebolla', 'aceituna', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Moda de la Casa de Ja Eh.', imageAlt: 'Placeholder de la pizza Moda de la Casa de Ja Eh.' },
+      paulista: { name: 'Paulista', description: 'Sabor regional que ayuda a dar identidad local al menu.', ingredients: ['salsa de tomate', 'mussarela', 'calabresa', 'cebolla', 'tomate', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Paulista de Ja Eh.', imageAlt: 'Placeholder de la pizza Paulista de Ja Eh.' },
+      brasileira: { name: 'Brasileña', description: 'Combinacion con atractivo popular para un menu muy brasileño.', ingredients: ['salsa de tomate', 'mussarela', 'jamon', 'maiz', 'huevo', 'aceituna', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Brasileña de Ja Eh.', imageAlt: 'Placeholder de la pizza Brasileña de Ja Eh.' },
+      baiana: { name: 'Baiana', description: 'Opcion mas intensa y marcada para quien disfruta un toque picante.', ingredients: ['salsa de tomate', 'mussarela', 'calabresa molida', 'cebolla', 'pimienta', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Baiana de Ja Eh.', imageAlt: 'Placeholder de la pizza Baiana de Ja Eh.' },
+      toscana: { name: 'Toscana', description: 'Sabor robusto para reforzar la parte especial del menu.', ingredients: ['salsa de tomate', 'mussarela', 'calabresa molida', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Toscana de Ja Eh.', imageAlt: 'Placeholder de la pizza Toscana de Ja Eh.' },
+      atum: { name: 'Atun', description: 'Clasico de pizzeria para quien busca otra familia de sabor.', ingredients: ['salsa de tomate', 'mussarela', 'atun', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Atun de Ja Eh.', imageAlt: 'Placeholder de la pizza Atun de Ja Eh.' },
+      'atum-com-cebola': { name: 'Atun con Cebolla', description: 'La version mas tradicional dentro de la familia de atun.', ingredients: ['salsa de tomate', 'mussarela', 'atun', 'cebolla', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Atun con Cebolla de Ja Eh.', imageAlt: 'Placeholder de la pizza Atun con Cebolla de Ja Eh.' },
+      'atum-com-bacon': { name: 'Atun con Bacon', description: 'Combinacion diferente que llama la atencion en el menu.', ingredients: ['salsa de tomate', 'mussarela', 'atun', 'bacon', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Atun con Bacon de Ja Eh.', imageAlt: 'Placeholder de la pizza Atun con Bacon de Ja Eh.' },
+      palmito: { name: 'Palmito', description: 'Opcion mas ligera y muy comun en menus brasileños.', ingredients: ['salsa de tomate', 'mussarela', 'palmito', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Palmito de Ja Eh.', imageAlt: 'Placeholder de la pizza Palmito de Ja Eh.' },
+      'palmito-com-catupiry': { name: 'Palmito con Catupiry', description: 'Version mas cremosa para completar el menu vegetariano.', ingredients: ['salsa de tomate', 'mussarela', 'palmito', 'catupiry', 'oregano'], whatsappMessage: 'Hola! Quiero pedir la pizza Palmito con Catupiry de Ja Eh.', imageAlt: 'Placeholder de la pizza Palmito con Catupiry de Ja Eh.' },
+    },
+  },
+  benefits: {
+    eyebrow: 'Por que elegir Ja Eh',
+    title: 'Cuatro razones directas para convertir sin friccion.',
+    description: 'Esta seccion fue hecha para presentar diferenciales de producto y servicio con lectura rapida y tono comercial.',
+    items: {
+      freshIngredients: { title: 'Ingredientes frescos', description: 'Tomate, queso y hierbas sostienen una entrega mas viva, aromatica y confiable.' },
+      handcraftedDough: { title: 'Masa artesanal', description: 'La fermentacion busca un borde ligero, interior suave y una textura que deja hablar al horno.' },
+      fastDelivery: { title: 'Entrega agil', description: 'El flujo mantiene el pedido por WhatsApp y el retiro como caminos rapidos de conversion.' },
+      boldFlavor: { title: 'Sabor marcado', description: 'Las recetas se sienten premium sin perder familiaridad ni atractivo popular.' },
+    },
+  },
+  socialProof: {
+    eyebrow: 'Clientes felices',
+    title: 'Prueba social con tono local, ligero y comercial.',
+    description: 'Los testimonios son ficticios por ahora, pero la estructura ya esta lista para evaluaciones reales.',
+    items: [
+      { quote: 'El borde llego dorado, el relleno equilibrado y el pedido a tiempo. Una opcion facil para la noche del viernes.', author: 'Camila R.', detail: 'Pedido familiar' },
+      { quote: 'Se siente como una marca nueva bien resuelta. La pizza llego caliente, linda y con sabor real de horno.', author: 'Diego M.', detail: 'Delivery local' },
+      { quote: 'Me gusto el combo, la rapidez y lo directo del pedido. Una experiencia simple y muy bien presentada.', author: 'Fernanda S.', detail: 'Retiro en tienda' },
+    ],
+  },
+  contact: {
+    eyebrow: 'Contacto',
+    title: 'Habla con Ja Eh para pedir, resolver dudas o solicitar el menu completo.',
+    description: 'El formulario mantiene la idea de captacion del proyecto: recoger interes de forma simple y dejar WhatsApp como ruta principal.',
+    infoTitle: 'Informacion del negocio',
+    addressLabel: 'Direccion',
+    hoursLabel: 'Horario',
+    deliveryLabel: 'Zona de entrega',
+    address: 'Rua das Palmeiras, 240 - Centro, Sao Paulo - SP',
+    openingHours: 'Todos los dias • 18:00 a 23:30',
+    serviceAreaNote: 'Entregas en barrios cercanos.',
+    phone: '+55 11 99999-9999',
+    whatsappCta: 'Pedir por WhatsApp',
+    whatsappMessage: 'Hola! Quiero hablar con Ja Eh sobre un pedido.',
+  },
+  form: {
+    title: 'Envia tu mensaje',
+    description: 'Completa los campos y el equipo respondera con atencion comercial.',
+    fields: { name: 'Nombre', email: 'Correo', phone: 'Telefono / WhatsApp', subject: 'Asunto', message: 'Mensaje' },
+    placeholders: { name: 'Tu nombre', email: 'tu@ejemplo.com', phone: '+55 11 99999-9999', subject: 'Quiero pedir una pizza grande', message: 'Cuenta que sabor, tamano o duda tienes.' },
+    submit: 'Enviar contacto',
+    submitting: 'Enviando...',
+    validationMessage: 'Completa todos los campos obligatorios.',
+    successMessage: 'Mensaje enviado con exito. El equipo de Ja Eh respondera pronto.',
+    errorMessage: 'No fue posible enviar ahora. Intenta de nuevo o escribe por WhatsApp.',
+  },
+  footer: {
+    description: 'Pizza artesanal con identidad fuerte, atencion agil y foco en conversion local.',
+    navigationTitle: 'Navegacion',
+    socialTitle: 'Redes sociales',
+    rights: 'Ja Eh. Layout listo para portfolio y evolucion futura con activos reales.',
+    whatsappLabel: 'WhatsApp',
+    instagramLabel: 'Instagram',
+    emailLabel: 'Correo',
+  },
+  images: {
+    heroPizzaAlt: 'Ilustracion placeholder de la pizza principal de Ja Eh.',
+    aboutAlt: 'Area placeholder para una foto del ambiente y la cocina de Ja Eh.',
+  },
+};
+
+export default esDictionary;

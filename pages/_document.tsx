@@ -14,10 +14,11 @@ type Props = DocumentInitialProps & {
 export default class MyDocument extends Document<Props> {
   static async getInitialProps(ctx: DocumentContext): Promise<Props> {
     const initialProps = await Document.getInitialProps(ctx);
+    const queryLocale = typeof ctx.query.locale === 'string' ? ctx.query.locale : undefined;
 
     return {
       ...initialProps,
-      locale: ctx.locale,
+      locale: queryLocale,
     };
   }
 
