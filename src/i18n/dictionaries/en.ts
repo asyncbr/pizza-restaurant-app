@@ -41,11 +41,11 @@ const enDictionary: Dictionary = {
     primaryCta: 'Order Now',
     secondaryCta: 'View Menu',
     visual: {
-      eyebrow: 'House spotlight',
-      title: 'Visual block prepared to receive the brand’s main pizza photo',
-      placeholderLabel: 'Visual placeholder',
+      eyebrow: 'Ja Eh signature',
+      title: 'Golden crust, generous cheese, and the kind of pizzeria flavor that settles the night.',
+      placeholderLabel: 'Our mission',
       description:
-        'This structure is ready to swap in a generated image or professional photo without rebuilding the layout.',
+        'Serve honest, well-built, memorable pizzas with quick service and a neighborhood feel that turns any order into a house ritual.',
     },
   },
   about: {
@@ -56,8 +56,8 @@ const enDictionary: Dictionary = {
     storyTitle: 'A warm, direct, easy-to-remember brand',
     story:
       'From carefully handled dough to low-friction service, Ja Eh was designed to communicate appetite, confidence, and convenience. The result is a pizza landing page ready for portfolios and future local clients.',
-    imageLabel: 'Kitchen and atmosphere placeholder',
-    imageDescription: 'Reserved area for a future oven, counter, or team photo.',
+    imageLabel: 'Kitchen in motion',
+    imageDescription: 'A hot oven, an active counter, and an operation built to deliver flavor with rhythm and consistency.',
   },
   menuPreview: {
     eyebrow: 'Menu preview',

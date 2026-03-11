@@ -1,5 +1,6 @@
 import { useState, type FormEvent, type ReactNode } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import { buildWhatsAppLink, getFeaturedPizzas, getOrderedMenuCategories, getPizzasByCategory, siteConfig, type PizzaMenuItem, type PizzaSizeId } from '@/lib/site';
 import type { Locale } from '@/src/i18n/config';
 import type { Dictionary } from '@/src/i18n/get-dictionary';
@@ -138,16 +139,16 @@ function HeroSection({ dictionary }: { dictionary: Dictionary['hero'] }) {
         <div className="absolute -right-14 top-6 h-40 w-40 rounded-full bg-amber-200/20 blur-3xl" />
         <div className="absolute -left-10 bottom-2 h-48 w-48 rounded-full bg-green-500/15 blur-3xl" />
         <div className="relative rounded-[2rem] border border-white/14 bg-stone-950/35 p-5 backdrop-blur">
-          <div className="rounded-[1.8rem] border border-white/10 bg-[radial-gradient(circle_at_50%_44%,#fef3c7_0%,#f59e0b_20%,#dc2626_48%,#5b130f_100%)] p-5">
-            <div role="img" aria-label={dictionary.visual.title} className="relative mx-auto aspect-square max-w-[460px] rounded-full border-[18px] border-[#f6d7a8] bg-[radial-gradient(circle_at_50%_48%,#d62828_0%,#b91c1c_48%,#7f1d1d_100%)] shadow-[inset_0_0_0_12px_rgba(255,248,231,0.28)]">
-              <span className="absolute left-[18%] top-[22%] h-16 w-16 rounded-full bg-[#fff7df] shadow-[0_0_0_8px_rgba(255,255,255,0.08)]" />
-              <span className="absolute right-[20%] top-[28%] h-14 w-14 rounded-full bg-[#fff7df]" />
-              <span className="absolute left-[28%] bottom-[20%] h-[3.75rem] w-[3.75rem] rounded-full bg-[#fff7df]" />
-              <span className="absolute right-[28%] bottom-[22%] h-16 w-16 rounded-full bg-[#fff7df]" />
-              <span className="absolute left-[45%] top-[18%] h-10 w-10 rounded-full bg-[#2f6b3a]" />
-              <span className="absolute left-[22%] top-[54%] h-9 w-9 rounded-full bg-[#2f6b3a]" />
-              <span className="absolute right-[24%] top-[52%] h-9 w-9 rounded-full bg-[#2f6b3a]" />
-              <span className="absolute left-[50%] bottom-[16%] h-10 w-10 rounded-full bg-[#2f6b3a]" />
+          <div className="rounded-[1.8rem] border border-white/10 bg-[radial-gradient(circle_at_50%_44%,#fef3c7_0%,#f59e0b_20%,#dc2626_48%,#5b130f_100%)] p-4 sm:p-5">
+            <div className="overflow-hidden rounded-[1.6rem] border border-white/15 shadow-[0_24px_60px_rgba(0,0,0,0.28)]">
+              <Image
+                src="/pizza-destak.png"
+                alt={dictionary.visual.title}
+                width={1152}
+                height={768}
+                priority
+                className="h-auto w-full object-cover"
+              />
             </div>
           </div>
           <div className="mt-5 grid gap-4 sm:grid-cols-[0.9fr_1.1fr]">
@@ -180,11 +181,23 @@ function FeaturedSection({ locale, dictionary }: { locale: Locale; dictionary: D
           return (
             <article key={item.slug} className="overflow-hidden rounded-[2rem] border border-stone-900/8 bg-white shadow-[0_24px_60px_rgba(77,46,24,0.14)]">
               <div className={`p-5 ${index % 3 === 0 ? 'bg-[radial-gradient(circle_at_top,#fde68a_0%,#fb7185_45%,#881337_100%)]' : index % 3 === 1 ? 'bg-[radial-gradient(circle_at_top,#fcd34d_0%,#dc2626_45%,#292524_100%)]' : 'bg-[radial-gradient(circle_at_top,#86efac_0%,#ea580c_45%,#431407_100%)]'}`}>
-                <div role="img" aria-label={copy.imageAlt} className="flex aspect-[4/3] items-end rounded-[1.5rem] border border-white/15 bg-black/18 p-4">
-                  <span className="rounded-full bg-white/88 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900">{item.image}</span>
-                </div>
+                {item.image === '/calabresa.png' ? (
+                  <div className="overflow-hidden rounded-[1.5rem] border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.22)]">
+                    <Image
+                      src={item.image}
+                      alt={copy.imageAlt}
+                      width={1024}
+                      height={1024}
+                      className="aspect-[4/3] w-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div role="img" aria-label={copy.imageAlt} className="flex aspect-[4/3] items-end rounded-[1.5rem] border border-white/15 bg-black/18 p-4">
+                    <span className="rounded-full bg-white/88 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900">{copy.name}</span>
+                  </div>
+                )}
               </div>
-              <div className="p-6">
+              <div className="flex h-full flex-col p-6">
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="text-2xl font-semibold text-stone-950">{copy.name}</h3>
                   <span className="rounded-full bg-red-50 px-3 py-1 text-sm font-semibold text-red-700">{formatPrice(locale, item.price)}</span>
@@ -200,7 +213,7 @@ function FeaturedSection({ locale, dictionary }: { locale: Locale; dictionary: D
                     <p className="mt-1 leading-6">{sizeLabels.join(', ')}</p>
                   </div>
                 </div>
-                <a href={buildWhatsAppLink(copy.whatsappMessage)} target="_blank" rel="noreferrer" className="mt-6 inline-flex rounded-full bg-stone-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-stone-800">
+                <a href={buildWhatsAppLink(copy.whatsappMessage)} target="_blank" rel="noreferrer" className="mt-auto pt-6 inline-flex rounded-full bg-stone-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-stone-800">
                   {dictionary.featured.ctaLabel}
                 </a>
               </div>

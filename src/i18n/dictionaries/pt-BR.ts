@@ -39,11 +39,11 @@ const ptBRDictionary = {
     primaryCta: 'Pedir Agora',
     secondaryCta: 'Ver Menu',
     visual: {
-      eyebrow: 'Destaque da casa',
-      title: 'Visual preparado para receber foto real da pizza principal da marca',
-      placeholderLabel: 'Placeholder visual',
+      eyebrow: 'Assinatura Ja Eh',
+      title: 'Borda dourada, queijo generoso e sabor de pizzaria que resolve a noite.',
+      placeholderLabel: 'Nossa missao',
       description:
-        'Estrutura pronta para trocar por imagem gerada ou foto profissional sem refazer o layout.',
+        'Servir pizzas honestas, bem montadas e memoraveis, com atendimento rapido e clima de bairro para transformar qualquer pedido em ritual da casa.',
     },
   },
   about: {
@@ -54,8 +54,8 @@ const ptBRDictionary = {
     storyTitle: 'Uma marca calorosa, direta e facil de lembrar',
     story:
       'Da massa aberta com cuidado ao atendimento sem atrito, a Ja Eh foi desenhada para passar desejo, seguranca e praticidade. O resultado e uma landing page de pizzaria pronta para portfolio e para futuros clientes locais.',
-    imageLabel: 'Placeholder ambiente e preparo',
-    imageDescription: 'Area reservada para foto do forno, bancada ou equipe em acao.',
+    imageLabel: 'Cozinha em movimento',
+    imageDescription: 'Forno aceso, bancada viva e uma operacao pensada para entregar sabor com ritmo e consistencia.',
   },
   menuPreview: {
     eyebrow: 'Preview do cardapio',

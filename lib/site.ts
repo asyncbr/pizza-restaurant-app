@@ -92,7 +92,7 @@ export const jaEhPizzaMenu: RestaurantMenu = {
   },
   pizzas: [
     { slug: 'mussarela', category: 'classics', sizesAvailable: ['grande'], price: 43.9, featured: false, image: '/images/pizza/mussarela.jpg' },
-    { slug: 'calabresa', category: 'classics', sizesAvailable: ['grande'], price: 46.9, featured: true, image: '/images/pizza/calabresa.jpg' },
+    { slug: 'calabresa', category: 'classics', sizesAvailable: ['grande'], price: 46.9, featured: true, image: '/calabresa.png' },
     { slug: 'calabresa-com-cebola', category: 'classics', sizesAvailable: ['grande'], price: 48.9, featured: false, image: '/images/pizza/calabresa-com-cebola.jpg' },
     { slug: 'portuguesa', category: 'classics', sizesAvailable: ['grande'], price: 52.9, featured: true, image: '/images/pizza/portuguesa.jpg' },
     { slug: 'marguerita', category: 'classics', sizesAvailable: ['grande'], price: 47.9, featured: true, image: '/images/pizza/marguerita.jpg' },
