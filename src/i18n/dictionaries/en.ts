@@ -199,6 +199,9 @@ const enDictionary: Dictionary = {
     rights: 'JAE Pizzas. Portfolio-ready layout prepared to evolve with real assets.',
     whatsappLabel: 'WhatsApp',
     instagramLabel: 'Instagram',
+    xLabel: 'X',
+    facebookLabel: 'Facebook',
+    tiktokLabel: 'TikTok',
     emailLabel: 'Email',
   },
   productCatalog: {

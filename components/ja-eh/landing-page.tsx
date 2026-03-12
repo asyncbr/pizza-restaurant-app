@@ -2,7 +2,7 @@ import { useState, type FormEvent, type ReactNode } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { buildWhatsAppLink, siteConfig } from '@/lib/site';
+import { buildWhatsAppLink, siteConfig, type SocialLinkId } from '@/lib/site';
 import { getFeaturedPizzas, getOrderedMenuCategories, getPizzasByCategory, type PizzaMenuItem, type PizzaSizeId } from '@/lib/products';
 import type { Locale } from '@/src/i18n/config';
 import type { Dictionary } from '@/src/i18n/get-dictionary';
@@ -89,6 +89,19 @@ function getPizzaCopy(
 
 function hasCustomPizzaImage(imagePath: string) {
   return !imagePath.startsWith('/images/pizza/');
+}
+
+function getSocialLabel(footer: Dictionary['footer'], id: SocialLinkId) {
+  switch (id) {
+    case 'instagram':
+      return footer.instagramLabel;
+    case 'x':
+      return footer.xLabel;
+    case 'facebook':
+      return footer.facebookLabel;
+    case 'tiktok':
+      return footer.tiktokLabel;
+  }
 }
 
 function NavbarSection({ locale, dictionary }: { locale: Locale; dictionary: Dictionary['navbar'] }) {
@@ -455,6 +468,8 @@ function ContactSection({ locale, contact, form }: { locale: Locale; contact: Di
 }
 
 function FooterSection({ locale, navbar, footer, contact }: { locale: Locale; navbar: Dictionary['navbar']; footer: Dictionary['footer']; contact: Dictionary['contact'] }) {
+  const socialLinks = Array.isArray(siteConfig.socialLinks) ? siteConfig.socialLinks : [];
+
   return (
     <footer className="pb-6 pt-10">
       <div className="rounded-[2rem] border border-brand-border/25 bg-brand-brownSoft/65 px-5 py-8 shadow-[0_18px_50px_rgba(29,13,3,0.18)] sm:px-8">
@@ -484,7 +499,11 @@ function FooterSection({ locale, navbar, footer, contact }: { locale: Locale; na
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-gold/70">{footer.socialTitle}</p>
             <div className="mt-4 grid gap-3 text-sm text-brand-cream/82">
               <a href={buildWhatsAppLink(contact.whatsappMessage)} target="_blank" rel="noreferrer">{footer.whatsappLabel}</a>
-              <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer">{footer.instagramLabel}</a>
+              {socialLinks.map((socialLink) => (
+                <a key={socialLink.id} href={socialLink.href} target="_blank" rel="noreferrer">
+                  {getSocialLabel(footer, socialLink.id)}
+                </a>
+              ))}
               <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
             </div>
           </div>

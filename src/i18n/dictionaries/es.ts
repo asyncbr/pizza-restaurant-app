@@ -178,6 +178,9 @@ const esDictionary: Dictionary = {
     rights: 'JAE Pizzas. Layout listo para portfolio y evolucion futura con activos reales.',
     whatsappLabel: 'WhatsApp',
     instagramLabel: 'Instagram',
+    xLabel: 'X',
+    facebookLabel: 'Facebook',
+    tiktokLabel: 'TikTok',
     emailLabel: 'Correo',
   },
   productCatalog: {

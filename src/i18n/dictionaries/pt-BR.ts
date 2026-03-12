@@ -391,6 +391,9 @@ const ptBRDictionary = {
     rights: 'JAE Pizzas. Layout portfolio pronto para evoluir com ativos reais.',
     whatsappLabel: 'WhatsApp',
     instagramLabel: 'Instagram',
+    xLabel: 'X',
+    facebookLabel: 'Facebook',
+    tiktokLabel: 'TikTok',
     emailLabel: 'E-mail',
   },
   productCatalog: {
