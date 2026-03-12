@@ -8,10 +8,10 @@ const ptBRDictionary = {
     brandTag: 'Pizzaria urbana artesanal',
     languageLabel: 'Idioma',
     links: {
-      home: 'Home',
-      menu: 'Menu',
-      about: 'About',
-      contact: 'Contact',
+      home: 'Inicio',
+      menu: 'Cardapio',
+      about: 'Sobre',
+      contact: 'Contato',
     },
     ctaLabel: 'Pedir Agora',
     locales: {

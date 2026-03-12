@@ -9,7 +9,12 @@ const esDictionary: Dictionary = {
   navbar: {
     brandTag: 'Pizzeria urbana artesanal',
     languageLabel: 'Idioma',
-    links: { home: 'Home', menu: 'Menu', about: 'About', contact: 'Contact' },
+    links: {
+      home: 'Inicio',
+      menu: 'Menu',
+      about: 'Nosotros',
+      contact: 'Contacto',
+    },
     ctaLabel: 'Pedir Ahora',
     locales: { 'pt-BR': 'PT-BR', en: 'EN', es: 'ES' },
   },

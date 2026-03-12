@@ -27,12 +27,7 @@ export default class MyDocument extends Document<Props> {
 
     return (
       <Html lang={locale}>
-        <Head>
-          <meta
-            name="description"
-            content="JAE Pizzas offers artisan pizza with bold flavors, local delivery, and a conversion-focused landing page experience."
-          />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
