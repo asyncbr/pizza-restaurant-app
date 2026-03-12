@@ -1,8 +1,8 @@
 export type SocialLinkId =
   | 'instagram'
-  | 'x'
   | 'facebook'
-  | 'tiktok';
+  | 'tiktok'
+  | 'x';
 
 export type SocialLink = {
   id: SocialLinkId;
@@ -16,9 +16,9 @@ export const siteConfig = {
   address: 'Rua das Palmeiras, 240 - Centro, Sao Paulo - SP',
   socialLinks: [
     { id: 'instagram', href: 'https://instagram.com/jaepizzas' },
-    { id: 'x', href: 'https://x.com/jaepizzas' },
     { id: 'facebook', href: 'https://facebook.com/jaepizzas' },
     { id: 'tiktok', href: 'https://tiktok.com/@jaepizzas' },
+    { id: 'x', href: 'https://x.com/jaepizzas' },
   ] as SocialLink[],
 } as const;
 
