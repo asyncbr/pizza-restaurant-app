@@ -1,3 +1,5 @@
+import type { Locale } from '@/src/i18n/config';
+
 export type SocialLinkId =
   | 'instagram'
   | 'facebook'
@@ -11,7 +13,7 @@ export type SocialLink = {
 
 export const siteConfig = {
   brandName: 'Jae Pizzas',
-  whatsappNumber: '5511999999999',
+  whatsappNumber: '5511958316072',
   contactEmail: 'contato@jaepizzas.com',
   address: 'Rua das Palmeiras, 240 - Centro, Sao Paulo - SP',
   socialLinks: [
@@ -25,4 +27,30 @@ export const siteConfig = {
 export function buildWhatsAppLink(message: string) {
   const encodedMessage = encodeURIComponent(message);
   return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodedMessage}`;
+}
+
+type PizzaOrderMessageInput = {
+  locale: Locale;
+  baseMessage: string;
+  pizzaName: string;
+  priceLabel: string;
+  sizeLabel: string;
+};
+
+export function buildPizzaOrderMessage({
+  locale,
+  baseMessage,
+  pizzaName,
+  priceLabel,
+  sizeLabel,
+}: PizzaOrderMessageInput) {
+  switch (locale) {
+    case 'en':
+      return `${baseMessage}\nPizza: ${pizzaName}\nSize: ${sizeLabel}\nPrice: ${priceLabel}`;
+    case 'es':
+      return `${baseMessage}\nPizza: ${pizzaName}\nTamano: ${sizeLabel}\nPrecio: ${priceLabel}`;
+    case 'pt-BR':
+    default:
+      return `${baseMessage}\nPizza: ${pizzaName}\nTamanho: ${sizeLabel}\nPreco: ${priceLabel}`;
+  }
 }

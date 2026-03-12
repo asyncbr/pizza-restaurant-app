@@ -7,7 +7,11 @@ import {
   getPizzasByCategory,
   jaePizzaMenu,
 } from '@/lib/products';
-import { buildWhatsAppLink, siteConfig } from '@/lib/site';
+import {
+  buildPizzaOrderMessage,
+  buildWhatsAppLink,
+  siteConfig,
+} from '@/lib/site';
 import { i18n, isLocale, type Locale } from '@/src/i18n/config';
 import { getDictionary, type Dictionary } from '@/src/i18n/get-dictionary';
 
@@ -204,12 +208,20 @@ export default function ProductsPage({
                           dictionary.menuPreview.pizzas[
                             product.slug as keyof Dictionary['menuPreview']['pizzas']
                           ];
+                        const priceLabel = formatPrice(locale, product.price);
                         const sizeLabels = product.sizesAvailable.map((sizeId) =>
                           getSizeLabel(
                             dictionary.menuPreview,
                             sizeId as keyof Dictionary['menuPreview']['sizes']
                           )
                         );
+                        const orderMessage = buildPizzaOrderMessage({
+                          locale,
+                          baseMessage: copy.whatsappMessage,
+                          pizzaName: copy.name,
+                          priceLabel,
+                          sizeLabel: sizeLabels.join(', '),
+                        });
 
                         return (
                           <div
@@ -250,7 +262,7 @@ export default function ProductsPage({
                                     </span>
                                   ) : null}
                                   <span className="rounded-full bg-brand-surface px-3 py-1 text-sm font-semibold text-brand-red">
-                                    {formatPrice(locale, product.price)}
+                                    {priceLabel}
                                   </span>
                                 </div>
                               </div>
@@ -273,7 +285,7 @@ export default function ProductsPage({
                                 </div>
                               </div>
                               <a
-                                href={buildWhatsAppLink(copy.whatsappMessage)}
+                                href={buildWhatsAppLink(orderMessage)}
                                 target="_blank"
                                 rel="noreferrer"
                                 className="mt-auto inline-flex rounded-full bg-brand-red px-5 py-3 text-sm font-semibold text-brand-creamLight transition hover:bg-brand-orange"

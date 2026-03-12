@@ -2,7 +2,12 @@ import { useState, type FormEvent, type ReactNode } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { buildWhatsAppLink, siteConfig, type SocialLinkId } from '@/lib/site';
+import {
+  buildPizzaOrderMessage,
+  buildWhatsAppLink,
+  siteConfig,
+  type SocialLinkId,
+} from '@/lib/site';
 import { getFeaturedPizzas, getOrderedMenuCategories, getPizzasByCategory, type PizzaMenuItem, type PizzaSizeId } from '@/lib/products';
 import type { Locale } from '@/src/i18n/config';
 import type { Dictionary } from '@/src/i18n/get-dictionary';
@@ -199,9 +204,17 @@ function FeaturedSection({ locale, dictionary }: { locale: Locale; dictionary: D
       <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {featuredPizzas.map((item, index) => {
           const copy = getPizzaCopy(dictionary, item.slug);
+          const priceLabel = formatPrice(locale, item.price);
           const sizeLabels = item.sizesAvailable.map((sizeId) =>
             getSizeLabel(dictionary, sizeId)
           );
+          const orderMessage = buildPizzaOrderMessage({
+            locale,
+            baseMessage: copy.whatsappMessage,
+            pizzaName: copy.name,
+            priceLabel,
+            sizeLabel: sizeLabels.join(', '),
+          });
           return (
             <article key={item.slug} className="overflow-hidden rounded-[2rem] border border-brand-border/18 bg-brand-creamLight shadow-[0_24px_60px_rgba(81,45,16,0.14)]">
               <div className={`p-5 ${index % 3 === 0 ? 'bg-[radial-gradient(circle_at_top,#fde68a_0%,#fb7185_45%,#881337_100%)]' : index % 3 === 1 ? 'bg-[radial-gradient(circle_at_top,#fcd34d_0%,#dc2626_45%,#292524_100%)]' : 'bg-[radial-gradient(circle_at_top,#86efac_0%,#ea580c_45%,#431407_100%)]'}`}>
@@ -224,7 +237,7 @@ function FeaturedSection({ locale, dictionary }: { locale: Locale; dictionary: D
               <div className="flex h-full flex-col p-6">
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="text-2xl font-semibold text-brand-text">{copy.name}</h3>
-                  <span className="rounded-full bg-brand-surface px-3 py-1 text-sm font-semibold text-brand-red">{formatPrice(locale, item.price)}</span>
+                  <span className="rounded-full bg-brand-surface px-3 py-1 text-sm font-semibold text-brand-red">{priceLabel}</span>
                 </div>
                 <p className="mt-4 text-sm leading-7 text-brand-brownSoft">{copy.description}</p>
                 <div className="mt-5 grid gap-3 text-sm text-brand-brownSoft">
@@ -237,7 +250,7 @@ function FeaturedSection({ locale, dictionary }: { locale: Locale; dictionary: D
                     <p className="mt-1 leading-6">{sizeLabels.join(', ')}</p>
                   </div>
                 </div>
-                <a href={buildWhatsAppLink(copy.whatsappMessage)} target="_blank" rel="noreferrer" className="mt-auto inline-flex rounded-full bg-brand-red px-5 py-3 text-sm font-semibold text-brand-creamLight transition hover:bg-brand-orange">
+                <a href={buildWhatsAppLink(orderMessage)} target="_blank" rel="noreferrer" className="mt-auto inline-flex rounded-full bg-brand-red px-5 py-3 text-sm font-semibold text-brand-creamLight transition hover:bg-brand-orange">
                   {dictionary.featured.ctaLabel}
                 </a>
               </div>
