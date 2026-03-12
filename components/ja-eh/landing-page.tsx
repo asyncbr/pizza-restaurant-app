@@ -1,7 +1,8 @@
 import { useState, type FormEvent, type ReactNode } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { buildWhatsAppLink, getFeaturedPizzas, getOrderedMenuCategories, getPizzasByCategory, siteConfig, type PizzaMenuItem, type PizzaSizeId } from '@/lib/site';
+import { buildWhatsAppLink, siteConfig } from '@/lib/site';
+import { getFeaturedPizzas, getOrderedMenuCategories, getPizzasByCategory, type PizzaMenuItem, type PizzaSizeId } from '@/lib/products';
 import type { Locale } from '@/src/i18n/config';
 import type { Dictionary } from '@/src/i18n/get-dictionary';
 import { LocaleSwitcher } from '@/components/ja-eh/locale-switcher';
