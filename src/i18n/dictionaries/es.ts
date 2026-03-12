@@ -77,6 +77,7 @@ const esDictionary: Dictionary = {
     asideBadge: 'Atencion rapida por WhatsApp',
     requestFullMenu: 'Solicitar Menu Completo',
     whatsappOrder: 'Pedir por WhatsApp',
+    seeAllProducts: 'Ver todos los productos',
     sizes: {
       grande: {
         label: 'Grande',

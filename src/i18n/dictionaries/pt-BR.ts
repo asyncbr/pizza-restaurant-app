@@ -88,6 +88,7 @@ const ptBRDictionary = {
     asideBadge: 'Atendimento rapido por WhatsApp',
     requestFullMenu: 'Solicitar Cardapio Completo',
     whatsappOrder: 'Pedir por WhatsApp',
+    seeAllProducts: 'Ver todos os produtos',
     sizes: {
       grande: {
         label: 'Grande',

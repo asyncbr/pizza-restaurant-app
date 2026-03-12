@@ -1,6 +1,7 @@
 import { useState, type FormEvent, type ReactNode } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { buildWhatsAppLink, siteConfig } from '@/lib/site';
 import { getFeaturedPizzas, getOrderedMenuCategories, getPizzasByCategory, type PizzaMenuItem, type PizzaSizeId } from '@/lib/products';
 import type { Locale } from '@/src/i18n/config';
@@ -354,6 +355,9 @@ function MenuPreviewSection({ locale, dictionary, contact }: { locale: Locale; d
           <a href={buildWhatsAppLink(contact.whatsappMessage)} target="_blank" rel="noreferrer" className="rounded-full border border-brand-border/35 px-5 py-3 text-center text-sm font-semibold text-brand-creamLight transition hover:bg-brand-cream/8">
             {dictionary.whatsappOrder}
           </a>
+          <Link href={`/${locale}/products`} className="rounded-full border border-brand-border/35 px-5 py-3 text-center text-sm font-semibold text-brand-creamLight transition hover:bg-brand-cream/8">
+            {dictionary.seeAllProducts}
+          </Link>
         </div>
       </aside>
     </section>

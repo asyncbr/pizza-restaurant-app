@@ -90,6 +90,7 @@ const enDictionary: Dictionary = {
     asideBadge: 'Fast WhatsApp service',
     requestFullMenu: 'Request Full Menu',
     whatsappOrder: 'Order on WhatsApp',
+    seeAllProducts: 'See all products',
     sizes: {
       grande: {
         label: 'Large',
