@@ -12,7 +12,7 @@ export type SocialLink = {
 };
 
 export const siteConfig = {
-  brandName: 'Jae Pizzas',
+  brandName: 'JAE Pizzas',
   whatsappNumber: '5511958316072',
   contactEmail: 'contato@jaepizzas.com',
   address: 'Rua das Palmeiras, 240 - Centro, Sao Paulo - SP',
